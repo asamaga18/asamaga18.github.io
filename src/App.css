@@ -1,0 +1,220 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.app {
+  min-height: 100vh;
+  background-color: #f8f8f8;
+}
+
+.landing-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 20px;
+}
+
+.landing-content {
+  text-align: center;
+  max-width: 600px;
+  padding: 40px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.landing-content h1 {
+  color: #713237;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.landing-subtitle {
+  color: #666;
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+}
+
+.landing-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.landing-btn {
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.landing-btn:hover {
+  transform: translateY(-2px);
+}
+
+.landing-btn.primary {
+  background-color: #713237;
+  color: white;
+}
+
+.landing-btn.primary:hover {
+  background-color: #8B4513;
+}
+
+.landing-btn.secondary {
+  background-color: white;
+  color: #713237;
+  border: 2px solid #713237;
+}
+
+.landing-btn.secondary:hover {
+  background-color: #f8f9fa;
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+  text-align: center;
+}
+
+.home h1 {
+  color: #8B4513;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-button {
+  display: inline-block;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: white;
+  background-color: #8B4513;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+.nav-button:hover {
+  background-color: #6b3410;
+}
+
+.page-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.main-content {
+  margin-left: 80px;
+  padding: 20px;
+  width: calc(100% - 80px);
+  box-sizing: border-box;
+  background-color: #f8f9fa;
+}
+
+/* Basic typography */
+h1 {
+  color: #713237;
+  margin-bottom: 1rem;
+}
+
+p {
+  color: #2c3e50;
+  line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 60px;
+    width: calc(100% - 60px);
+    padding: 15px;
+  }
+
+  .landing-content h1 {
+    font-size: 2rem;
+  }
+
+  .landing-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .landing-buttons {
+    flex-direction: column;
+  }
+
+  .landing-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content {
+    margin-left: 50px;
+    width: calc(100% - 50px);
+    padding: 10px;
+  }
+
+  .landing-content {
+    padding: 30px 20px;
+  }
+
+  .landing-content h1 {
+    font-size: 1.75rem;
+  }
+
+  .landing-subtitle {
+    font-size: 1rem;
+  }
+}

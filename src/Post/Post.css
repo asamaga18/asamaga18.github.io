@@ -1,8 +1,7 @@
 /* General Layout */
 body {
     margin: 0;
-    display: flex;
-    height: 100vh;
+    min-height: 100vh;
     background-color: #f8f9fa;
     font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
     color: #2c3e50;
@@ -11,6 +10,7 @@ body {
   /* Sidebar */
   .sidebar {
     width: 80px;
+    min-width: 80px;
     background-color: #ffffff;
     display: flex;
     flex-direction: column;
@@ -19,6 +19,8 @@ body {
     gap: 30px;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
     z-index: 100;
+    height: 100vh;
+    position: fixed;
   }
   
   .plus-btn {
@@ -38,7 +40,7 @@ body {
   
   .plus-btn:hover {
     transform: scale(1.1);
-    background-color: #713237;
+    background-color: #8B4513;
   }
   
   .menu {
@@ -70,22 +72,27 @@ body {
   
   /* Main Content Area */
   .main-content {
-    flex: 1;
+    margin-left: 80px;
+    padding: 20px;
+    min-height: 100vh;
+    width: calc(100% - 80px);
+    box-sizing: border-box;
     display: flex;
     justify-content: center;
-    align-items: center;
-    padding: 40px;
+    align-items: flex-start;
     background-color: #f8f9fa;
   }
   
   /* Form Styling */
   .post-container {
-    max-width: 600px;
+    max-width: 800px;
     width: 100%;
     background: white;
     border-radius: 15px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
     padding: 30px;
+    margin: 20px;
+    box-sizing: border-box;
   }
   
   .post-title {
@@ -123,6 +130,10 @@ body {
     border-radius: 10px;
     border: 2px dashed #dee2e6;
     transition: border-color 0.2s;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   .image-container:hover {
@@ -136,6 +147,7 @@ body {
     gap: 10px;
     cursor: pointer;
     color: #7f8c8d;
+    width: 100%;
   }
   
   .upload-label i {
@@ -187,7 +199,7 @@ body {
   }
   
   .submit-btn:hover {
-    background-color: #713237;
+    background-color: #8B4513;
     transform: translateY(-1px);
   }
   
@@ -197,16 +209,43 @@ body {
   
   /* Responsive Design */
   @media (max-width: 768px) {
-    .sidebar {
-      width: 60px;
-    }
-    
     .main-content {
-      padding: 20px;
+      margin-left: 60px;
+      width: calc(100% - 60px);
+      padding: 10px;
     }
     
     .post-container {
-      padding: 20px;
+      padding: 15px;
+      margin: 10px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .main-content {
+      margin-left: 50px;
+      width: calc(100% - 50px);
+      padding: 5px;
+    }
+    
+    .post-container {
+      padding: 10px;
+      margin: 5px;
+    }
+    
+    .post-title {
+      font-size: 1.2rem;
+      padding: 10px 15px;
+    }
+    
+    .form-group label {
+      font-size: 0.8rem;
+    }
+    
+    .input,
+    .textarea {
+      padding: 8px 12px;
+      font-size: 0.9rem;
     }
   }
   

@@ -1,15 +1,15 @@
-import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import './Auth.css';
 
 declare global {
   interface Window {
     google: any;
-    handleCredentialResponse: (response: any) => void;
+    handleCredentialResponse?: (response: any) => void;
   }
 }
 
-const Login: React.FC = () => {
+const Login = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -29,7 +29,9 @@ const Login: React.FC = () => {
 
     return () => {
       document.body.removeChild(script);
-      delete window.handleCredentialResponse;
+      if (window.handleCredentialResponse) {
+        delete window.handleCredentialResponse;
+      }
     };
   }, [navigate]);
 
@@ -44,23 +46,31 @@ const Login: React.FC = () => {
 
   return (
     <div className="auth-container">
-      <h2>Login with Google</h2>
-      <div
-        id="g_id_onload"
-        data-client_id="339592120472-nlm1adirm0hrm2b4okpb5lqalk4bpnci.apps.googleusercontent.com"
-        data-context="signin"
-        data-callback="handleCredentialResponse"
-        data-auto_prompt="false"
-      ></div>
-      <div
-        className="g_id_signin google-button"
-        data-type="standard"
-        data-shape="rectangular"
-        data-theme="outline"
-        data-text="sign_in_with"
-        data-size="large"
-        data-logo_alignment="left"
-      ></div>
+      <div className="auth-box">
+        <h1>Welcome Back</h1>
+        <p className="auth-subtitle">Sign in to continue to The Tomato Trade</p>
+
+        <div
+          id="g_id_onload"
+          data-client_id="339592120472-nlm1adirm0hrm2b4okpb5lqalk4bpnci.apps.googleusercontent.com"
+          data-context="signin"
+          data-callback="handleCredentialResponse"
+          data-auto_prompt="false"
+        ></div>
+        <div
+          className="g_id_signin google-button"
+          data-type="standard"
+          data-shape="rectangular"
+          data-theme="outline"
+          data-text="sign_in_with"
+          data-size="large"
+          data-logo_alignment="left"
+        ></div>
+
+        <div className="auth-footer">
+          Don't have an account? <Link to="/signup">Sign up</Link>
+        </div>
+      </div>
     </div>
   );
 };
