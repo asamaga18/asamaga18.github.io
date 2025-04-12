@@ -1,65 +1,53 @@
+/* General Layout */
 body {
     margin: 0;
-    font-family: sans-serif;
-    background-color: #f3f0ec;
     display: flex;
-    color: #333;
+    height: 100vh;
+    background-color: #f4f1ed;
+    font-family: sans-serif;
   }
   
+  /* Sidebar */
   .sidebar {
-    width: 70px;
-    background-color: #d9cfc4;
+    width: 80px;
+    background-color: #bca397;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-top: 20px;
+    gap: 20px;
   }
   
-  .sidebar button {
-    background-color: #8b4431;
+  .plus-btn {
+    font-size: 24px;
+    background: #8b4431;
     color: white;
     border: none;
     border-radius: 50%;
-    width: 32px;
-    height: 32px;
-    font-size: 20px;
-    margin-bottom: 20px;
+    width: 40px;
+    height: 40px;
     cursor: pointer;
   }
   
-  .label {
+  .menu {
+    color: #682f2d;
     text-align: center;
     font-size: 12px;
-    color: #8b4431;
-    margin-bottom: 16px;
   }
   
-  .label-icon {
-    width: 24px;
-    height: 24px;
-    border: 1px solid #8b4431;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 4px;
-  }
-  
-  .main {
+  /* Main Content Area */
+  .main-content {
     flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
   }
   
-  .header {
-    background-color: #682f2d;
-    color: white;
-    padding: 20px;
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
+  /* Form Styling */
   .post-container {
     max-width: 600px;
-    margin: 40px auto;
+    width: 100%;
     background: white;
     border-radius: 10px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
@@ -73,6 +61,7 @@ body {
     background-color: #eee;
     padding: 16px;
     text-align: center;
+    border-radius: 6px;
   }
   
   .input,
