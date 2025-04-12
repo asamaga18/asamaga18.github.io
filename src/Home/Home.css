@@ -43,16 +43,24 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
+  align-items: center;
+  justify-content: center;
 }
 
 .hero-section {
   text-align: center;
   padding: 4rem 0;
+  border: 2px solid #ffffff;  /* color and thickness of border */
+  padding: 12px 20px;         /* space inside the box */
+  border-radius: 8px;         /* rounded corners */
+  background-color: #713237;  /* light background color */
+  display: inline-block;      /* so the box wraps around just the text */
+  font-weight: bold;
 }
 
 .hero-section h1 {
   font-size: 2.5rem;
-  color: #2c3e50;
+  color: #ffffff;
   margin-bottom: 1rem;
   /* changed */
   text-align: center;
@@ -60,7 +68,7 @@
 
 .hero-section p {
   font-size: 1.2rem;
-  color: #7f8c8d;
+  color: #ffffff;
 }
 
 .quick-actions {
