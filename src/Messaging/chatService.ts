@@ -9,15 +9,22 @@ export class ChatService {
 
   private static async makeRequest(url: string, options?: RequestInit) {
     try {
+      // Get the auth token from localStorage
+      const token = localStorage.getItem('auth_token');
+      
       const response = await fetch(url, {
         ...options,
         headers: {
           'Content-Type': 'application/json',
-          'X-User-Id': this.userId,
+          'Authorization': `Bearer ${token || ''}`,
+          ...options?.headers,
         },
+        credentials: 'include',  // Include cookies in the request
       });
       
       if (!response.ok) {
+        const errorData = await response.text();
+        console.error('Server error:', errorData);
         throw new Error('Request failed');
       }
       
