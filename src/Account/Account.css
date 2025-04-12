@@ -1,60 +1,93 @@
 .account-page {
     display: flex;
-    justify-content: space-between;
-    align-items: left;
+    justify-content: center;
+    align-items: flex-start;
     color: #F9F6F1;
 }
 
-.account-container {
-    width: 580px;
-    height: auto;
+.merged-container {
+    display: flex;
+    justify-content: space-between;
+    width: justify;
     margin: 0 auto;
-    margin-right: 40px;
     padding: 20px;
     border: 1px solid #000000;
     border-radius: 8px;
-    background-color: #713237;
+    background-color: #F9F6F1;
+    flex-direction: column;
 }
-
-.settings-container {
-    width: 580px;
-    height: 550px;
-    margin: 0 auto;
-    margin-right: 40px;
-    padding: 20px;
-    border: 1px solid #000000;
-    border-radius: 8px;
-    background-color: #713237;
-}
-
-.header1 {
+    
+.header-container {
+    width: justify;
     background-color: #713237;
     padding: 20px;
     text-align: left;
-    /* border-bottom: 1px solid #230404; */
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+    
+.section1, .section2 {
+    display: flex;
+    flex-direction: column;
+    width: 1200px;
+    padding: 20px;
+}
+
+/* .section1 {
+    width: 740px;
+    padding: 20px;
+}
+
+.section2 {
+    width: 340px;
+    padding: 20px;
+    padding-top: 12rem;
+} */
+
+.header1 {
+    position: sticky;
+    top: 0;
+    background-color: #713237;
+    padding: 20px;
+    margin-top: 200px;
+    text-align: left;
     font-size: 48px;
     font-weight: bold;
     margin-bottom: 20px;
     margin-top: 40px;
 }
 
-h1 {
+h1, h3 {
     font-size: 48px;
     font-weight: bold;
     text-align: left;
     margin-bottom: 20px;
 }
 
-h3 {
-    font-size: 48px;
-    font-weight: bold;
+.display-container {
+    background-color: white;
+    width: justify;
+    height: auto;
+    padding: 0px;
+    padding-right: 0;
+    padding-left: 15px;
     text-align: left;
+    font-size: 38px;
+    font-weight: bold;
     margin-bottom: 20px;
-    margin-top: 60px;
+    margin-right: 0;
+}
+
+h3 {
+    color: #713237;
+    font-size: 2rem;
 }
 
 #location, #produce, #extra1, #extra2, #extra3, #notifications, #language, #privacy {
     color: black;
+    margin-top: 0;
+    text-align: left;
 }
 
 .form-group {
@@ -62,11 +95,10 @@ h3 {
 }
 
 #labelName {
-    color: #F9F6F1;
+    color: #000000;
     text-align: left;
-    /* padding-left: 1rem; */
 }
-  
+
 label {
     display: block;
     margin-bottom: 5px;
@@ -78,8 +110,8 @@ Select {
     color: black;
 }
 
-input {
-    width: 560px;
+input, select {
+    width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -87,22 +119,20 @@ input {
     margin-top: 20px;
 }
 
-select {
-    width: 578px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-bottom: 0px;
-}
-
 option {
     padding: 20px;
 }
 
 #logOutButton {
-    margin-top: 5rem;
+    margin-top: 1rem;
     height: 3rem;
     width: 10rem;
     font-weight: bold;
     font-size: 1rem;
 }
+
+.dotted-line {
+    border-top: 2px dotted #000;
+    margin: 20px 0;
+}
+    
