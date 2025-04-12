@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Browse from './Browse/Browse';
+import Account from './Account/Account';
 import './App.css';
 
 function LandingPage() {
@@ -22,6 +23,7 @@ function HomePage() {
       <div className="nav-buttons">
         <Link to="/post" className="nav-button">Go to Post</Link>
         <Link to="/browse" className="nav-button">Go to Browse</Link>
+        <Link to="/account" className="nav-button">Go to Account</Link>
       </div>
     </div>
   );
@@ -35,6 +37,7 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/home" element={<HomePage />} />
           <Route path="/browse" element={<Browse />} />
+          <Route path="/account" element={<Account />} />
           <Route path="/login" element={<div>Login Page (Coming Soon)</div>} />
           <Route path="/signup" element={<div>Signup Page (Coming Soon)</div>} />
           <Route path="/post" element={<div>Post Page (Coming Soon)</div>} />
