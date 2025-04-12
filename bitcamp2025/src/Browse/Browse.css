@@ -1,0 +1,168 @@
+.browse-page {
+  display: flex;
+  height: 100vh;
+  background-color: #f8f8f8;
+}
+
+.sidebar {
+  width: 80px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 0;
+  border-right: 1px solid #e2e8f0;
+}
+
+.menu-button, .add-button {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.add-button {
+  background-color: #8B4513;
+  color: white;
+}
+
+.nav-items {
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 0;
+  color: #666;
+  cursor: pointer;
+  font-size: 0.75rem;
+}
+
+.nav-item.active {
+  color: #8B4513;
+}
+
+.nav-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.top-bar {
+  background-color: #8B4513;
+  color: white;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.top-bar h1 {
+  flex: 1;
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.top-bar-icons {
+  display: flex;
+  gap: 1rem;
+}
+
+.icon-button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 1.25rem;
+}
+
+.filter-chips {
+  padding: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.filter-chip {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  border: none;
+  background-color: #FFE4E1;
+  color: #8B4513;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+.filter-chip.selected {
+  background-color: #8B4513;
+  color: white;
+}
+
+.items-grid {
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  overflow-y: auto;
+}
+
+.item-card {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.item-placeholder {
+  background-color: #f0f0f0;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.item-placeholder::before {
+  content: '';
+  width: 60px;
+  height: 60px;
+  background-color: #e0e0e0;
+  border-radius: 8px;
+}
+
+.item-details {
+  padding: 1rem;
+}
+
+.item-details h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+.item-details p {
+  margin: 0.25rem 0 0;
+  font-size: 0.75rem;
+  color: #666;
+}
