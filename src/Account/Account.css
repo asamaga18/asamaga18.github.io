@@ -34,17 +34,6 @@
     padding: 20px;
 }
 
-/* .section1 {
-    width: 740px;
-    padding: 20px;
-}
-
-.section2 {
-    width: 340px;
-    padding: 20px;
-    padding-top: 12rem;
-} */
-
 .header1 {
     position: sticky;
     top: 0;
@@ -95,7 +84,7 @@ h3 {
 }
 
 #labelName {
-    color: #000000;
+    color: #F9F6F1;
     text-align: left;
 }
 
