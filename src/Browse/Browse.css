@@ -1,7 +1,12 @@
-.browse-page {
+/* .browse-page {
   display: flex;
   height: 100vh;
   background-color: #f8f8f8;
+} */
+
+.browse-container{
+  background-image: url('/backgroundimage.png'); /* ✅ use path from public folder */
+
 }
 
 /* .home-nav {
