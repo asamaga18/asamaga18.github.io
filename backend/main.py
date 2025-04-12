@@ -5,6 +5,7 @@ import uvicorn
 from datetime import datetime
 from beanie import PydanticObjectId
 import traceback
+from auth import router as auth_router, get_current_user
 
 from models import (
     User, Chat, Message,
@@ -24,6 +25,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Include the auth router
+app.include_router(auth_router, prefix="/auth", tags=["auth"])
+
 @app.on_event("startup")
 async def startup_event():
     await init_db()
@@ -32,26 +36,97 @@ async def startup_event():
 def root():
     return {"msg": "FastAPI with MongoDB is live"}
 
-# Simplified user authentication
-async def get_current_user(x_user_id: Optional[str] = Header(None)) -> User:
-    if not x_user_id:
-        x_user_id = "test-user-1"
+@app.get("/users/search")
+async def search_users(
+    query: str,
+    current_user: User = Depends(get_current_user)
+) -> List[UserResponse]:
+    """Search for users by name or email"""
+    users = await User.find({
+        "$or": [
+            {"email": {"$regex": query, "$options": "i"}},
+            {"first_name": {"$regex": query, "$options": "i"}},
+            {"last_name": {"$regex": query, "$options": "i"}}
+        ],
+        "id": {"$ne": current_user.id}  # Exclude current user
+    }).to_list()
     
-    print(f"Looking up user with ID: {x_user_id}")
-    user = await User.find_one({"google_id": x_user_id})
-    if not user:
-        print(f"Creating new user with ID: {x_user_id}")
-        user = User(
-            google_id=x_user_id,
-            email=f"{x_user_id}@example.com",
-            first_name="Test",
-            last_name="User"
+    return [
+        UserResponse(
+            id=str(user.id),
+            email=user.email,
+            first_name=user.first_name,
+            last_name=user.last_name,
+            profile_picture=user.profile_picture
+        ) for user in users
+    ]
+
+@app.post("/chat/direct/{user_id}")
+async def create_direct_chat(
+    user_id: str,
+    current_user: User = Depends(get_current_user)
+) -> ChatResponse:
+    """Create or get a direct chat with another user"""
+    try:
+        # Convert string ID to ObjectId
+        target_user_id = PydanticObjectId(user_id)
+        
+        # Check if target user exists
+        target_user = await User.get(target_user_id)
+        if not target_user:
+            raise HTTPException(status_code=404, detail="User not found")
+            
+        # Check if a direct chat already exists between these users
+        existing_chat = await Chat.find_one({
+            "type": "direct",
+            "participants": {"$all": [current_user.id, target_user_id]}
+        })
+        
+        if existing_chat:
+            return ChatResponse(
+                id=str(existing_chat.id),
+                name=f"{target_user.first_name} {target_user.last_name}",
+                type="direct",
+                participants=[
+                    UserResponse(
+                        id=str(target_user.id),
+                        email=target_user.email,
+                        first_name=target_user.first_name,
+                        last_name=target_user.last_name,
+                        profile_picture=target_user.profile_picture
+                    )
+                ]
+            )
+            
+        # Create new direct chat
+        new_chat = Chat(
+            name=f"{target_user.first_name} {target_user.last_name}",
+            type="direct",
+            participants=[current_user.id, target_user_id]
         )
-        await user.insert()
-        print(f"Created user with database ID: {user.id}")
-    else:
-        print(f"Found existing user with database ID: {user.id}")
-    return user
+        await new_chat.create()
+        
+        return ChatResponse(
+            id=str(new_chat.id),
+            name=new_chat.name,
+            type="direct",
+            participants=[
+                UserResponse(
+                    id=str(target_user.id),
+                    email=target_user.email,
+                    first_name=target_user.first_name,
+                    last_name=target_user.last_name,
+                    profile_picture=target_user.profile_picture
+                )
+            ]
+        )
+        
+    except ValueError as ve:
+        raise HTTPException(status_code=400, detail=f"Invalid user ID format: {str(ve)}")
+    except Exception as e:
+        print(f"Error creating direct chat: {str(e)}")
+        traceback.print_exc()
+        raise HTTPException(status_code=500, detail=str(e))
 
 @app.post("/chat/create", response_model=ChatResponse)
 async def create_chat(chat: ChatCreate, current_user: User = Depends(get_current_user)):
