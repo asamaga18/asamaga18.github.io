@@ -1,6 +1,6 @@
 .home-container {
   background-image: url('/backgroundimage.png'); /* ✅ use path from public folder */
-  background-size: cover;
+  /* background-size: cover; */
   background-position: center;
   background-repeat: no-repeat;
   min-height: 100vh; /* so it covers full screen height */
@@ -9,7 +9,6 @@
   
 }
 .home-nav {
-  display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
@@ -26,6 +25,8 @@
   font-size: 1.5rem;
   font-weight: bold;
   color: #F9F6F1;
+  text-align: center;
+  justify-content: center;
 }
 
 .nav-links {

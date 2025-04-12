@@ -17,12 +17,12 @@ const Home = () => {
       <nav className="home-nav">
         <img src="/thetomatotrade/thetomatotradelogo.png" alt="The Tomato Trade Logo" width="50" height="50"/>
         <div className="nav-logo">The Tomato Trade</div>
-        <div className="nav-links">
+        {/* <div className="nav-links">
           <Link to="/browse" className="nav-link">Browse</Link>
           <Link to="/post" className="nav-link">Create Post</Link>
           <Link to="/messages" className="nav-link">Messages</Link>
           <Link to="/account" className="nav-link">Account</Link>
-        </div>
+        </div> */}
       </nav>
       
       <main className="home-content">
