@@ -34,9 +34,16 @@
     padding: 20px;
 }
 
-.section1 {
-    padding-bottom: 0;
+/* .section1 {
+    width: 740px;
+    padding: 20px;
 }
+
+.section2 {
+    width: 340px;
+    padding: 20px;
+    padding-top: 12rem;
+} */
 
 .header1 {
     position: sticky;
@@ -73,7 +80,7 @@ h1, h3 {
 }
 
 h3 {
-    color: #747474;
+    color: #713237;
     font-size: 2rem;
 }
 
@@ -88,7 +95,7 @@ h3 {
 }
 
 #labelName {
-    color: #F9F6F1;
+    color: #000000;
     text-align: left;
 }
 
@@ -127,6 +134,5 @@ option {
 .dotted-line {
     border-top: 2px dotted #000;
     margin: 20px 0;
-    padding-bottom: 30px;
 }
     
