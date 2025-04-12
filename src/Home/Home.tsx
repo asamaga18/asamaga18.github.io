@@ -5,6 +5,7 @@ const Home = () => {
   return (
     <div className="home-container">
       <nav className="home-nav">
+        <img src="/thetomatotrade/thetomatotradelogo.png" alt="The Tomato Trade Logo" width="50" height="50"/>
         <div className="nav-logo">The Tomato Trade</div>
         <div className="nav-links">
           <Link to="/browse" className="nav-link">Browse</Link>
