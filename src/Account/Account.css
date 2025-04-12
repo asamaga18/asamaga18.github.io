@@ -7,7 +7,7 @@
 
 .account-container {
     width: 580px;
-    height: 550px;
+    height: auto;
     margin: 0 auto;
     margin-right: 40px;
     padding: 20px;
@@ -31,8 +31,7 @@
     background-color: #713237;
     padding: 20px;
     text-align: left;
-    border-bottom: 1px solid #230404;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* border-bottom: 1px solid #230404; */
     font-size: 48px;
     font-weight: bold;
     margin-bottom: 20px;
@@ -48,20 +47,35 @@ h1 {
 
 h3 {
     font-size: 48px;
-    font-weight: normal;
+    font-weight: bold;
     text-align: left;
     margin-bottom: 20px;
     margin-top: 60px;
 }
 
+#location, #produce, #extra1, #extra2, #extra3, #notifications, #language, #privacy {
+    color: black;
+}
+
 .form-group {
     margin-bottom: 20px;
+}
+
+#labelName {
+    color: #F9F6F1;
+    text-align: left;
+    /* padding-left: 1rem; */
 }
   
 label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
+    color: black;
+}
+
+Select {
+    color: black;
 }
 
 input {
@@ -83,4 +97,12 @@ select {
 
 option {
     padding: 20px;
+}
+
+#logOutButton {
+    margin-top: 5rem;
+    height: 3rem;
+    width: 10rem;
+    font-weight: bold;
+    font-size: 1rem;
 }
