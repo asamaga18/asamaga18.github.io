@@ -1,6 +1,7 @@
 // import React from "react";
 import { useState, useEffect} from "react";
 import Select from 'react-select';
+import Sidebar from '../components/Sidebar';
 import './Account.css';
 import './Account';
 
@@ -109,6 +110,7 @@ localStorage.setItem('privacy', privacy);
 
 return (
 <div className="account-page">
+    <Sidebar />
     <div className="account-container">
     <div className="header1">Account</div>
     <form>
@@ -203,6 +205,12 @@ return (
             <option value="public">Public</option>
             <option value="private">Private</option>
         </select>
+        </div>
+
+        {/* by hand */}
+        <div className="form-group">
+        {/* <label htmlFor="privacy">Log out?:</label> */}
+        <button>Log Out(implement)</button>
         </div>
     </form>
     </div>
