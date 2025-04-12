@@ -5,6 +5,7 @@ import './Post.css';
 
 interface PostFormData {
   itemName: string;
+  category: string;
   quantity: string;
   location: string;
   price: string;
@@ -16,6 +17,7 @@ const Post = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState<PostFormData>({
     itemName: '',
+    category: '',
     quantity: '',
     location: '',
     price: '',
@@ -24,7 +26,9 @@ const Post = () => {
   });
   const [imagePreview, setImagePreview] = useState<string>('');
 
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -43,11 +47,40 @@ const Post = () => {
     }
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log(formData);
-    navigate('/');
+
+    const postData = {
+      item_name: formData.itemName,
+      category: formData.category,
+      quantity: formData.quantity,
+      location: formData.location,
+      price: formData.price,
+      description: formData.description,
+      image_url: imagePreview || ''
+    };
+
+    try {
+      const res = await fetch(`${import.meta.env.VITE_API_BASE}/posts`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(postData)
+      });
+
+      if (!res.ok) {
+        const errorText = await res.text();
+        console.error("Backend error:", res.status, errorText);
+        alert("Post submission failed.");
+        return;
+      }
+
+      navigate('/browse');
+    } catch (err) {
+      console.error(err);
+      alert('Error posting item.');
+    }
   };
 
   return (
@@ -61,7 +94,11 @@ const Post = () => {
               <label htmlFor="image">Upload Image</label>
               <div className="image-container">
                 {imagePreview ? (
-                  <img src={imagePreview} alt="Preview" style={{ maxWidth: '100%', maxHeight: '200px' }} />
+                  <img
+                    src={imagePreview}
+                    alt="Preview"
+                    style={{ maxWidth: '100%', maxHeight: '200px' }}
+                  />
                 ) : (
                   <label className="upload-label" htmlFor="image">
                     <i className="fas fa-cloud-upload-alt"></i>
@@ -94,10 +131,10 @@ const Post = () => {
             <div className="form-group">
               <label htmlFor="category">Category</label>
               <select
-                id="location"
-                name="location"
+                id="category"
+                name="category"
                 className="input"
-                value={formData.location}
+                value={formData.category}
                 onChange={handleInputChange}
                 required
               >
@@ -156,7 +193,7 @@ const Post = () => {
                   value={formData.price}
                   onChange={handleInputChange}
                   required
-                  step="0.01" // ✅ allows decimal values
+                  step="0.01"
                   min="0"
                 />
               </div>
