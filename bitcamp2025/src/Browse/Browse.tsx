@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { createRoot } from 'react-dom/client';
 import './Browse.css';
 
 interface Item {
@@ -14,7 +13,7 @@ interface FilterChip {
   isSelected: boolean;
 }
 
-export const Browse: React.FC = () => {
+const Browse: React.FC = () => {
   const [filterChips, setFilterChips] = useState<FilterChip[]>([
     { id: '1', label: 'Tomatoes', isSelected: false },
     { id: '2', label: 'Lettuce', isSelected: true },
@@ -107,9 +106,4 @@ export const Browse: React.FC = () => {
   );
 };
 
-// Initialize the app
-const container = document.getElementById('root');
-if (container) {
-  const root = createRoot(container);
-  root.render(<Browse />);
-}
+export default Browse;
