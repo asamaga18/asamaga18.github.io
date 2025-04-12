@@ -4,8 +4,14 @@
   background-color: #f8f8f8;
 } */
 
-body{
-  background-image: url('/backgroundimage.png'); /* ✅ use path from public folder */
+body {
+  background-image: url('/backgroundimage.png');
+ 
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  min-height: 100vh;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
 }
 
 .browse-nav {
@@ -141,10 +147,14 @@ body{
 }
 
 .browse-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+  min-height: 100vh;
+  padding-left: 80px; /* if sidebar is 80px wide */
+  box-sizing: border-box;
 }
+
 
 .browse-header {
   margin-bottom: 2rem;

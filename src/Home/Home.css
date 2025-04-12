@@ -1,13 +1,13 @@
 .home-container {
-  background-image: url('/backgroundimage.png'); /* ✅ use path from public folder */
-  /* background-size: cover; */
-  /* background-position: center; */
-  /*   */
-  min-height: 100vh; /* so it covers full screen height */
+  background-image: url('/backgroundimage.png');
+
+  width: 100vw;
+  height: 100vh;
   margin: 0;
-  padding: 0; 
-  
+  padding: 0;
+  overflow-x: hidden; /* optional: prevents horizontal scrolling */
 }
+
 .home-nav {
   display: flex;
   justify-content: space-between;
