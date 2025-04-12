@@ -1,21 +1,27 @@
 export interface Message {
   id: string;
-  senderId: string;
   content: string;
-  timestamp: Date;
-  read: boolean;
+  sender: {
+    id: string;
+    first_name: string;
+    last_name: string;
+    profile_picture?: string;
+  };
+  timestamp: string;
 }
 
 export interface ChatUser {
   id: string;
-  name: string;
-  avatar?: string;
-  lastSeen?: Date;
+  email: string;
+  first_name: string;
+  last_name: string;
+  profile_picture?: string;
 }
 
 export interface ChatConversation {
   id: string;
+  name: string;
+  type: string;
   participants: ChatUser[];
-  lastMessage?: Message;
-  unreadCount: number;
+  messages: Message[];
 } 

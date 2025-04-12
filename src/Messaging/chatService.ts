@@ -3,11 +3,30 @@ import { Message, ChatConversation, ChatUser } from './types';
 // This will be replaced with actual API calls later
 const MOCK_DELAY = 500;
 
+interface User {
+  id: string;
+  email: string;
+  first_name: string;
+  last_name: string;
+  profile_picture?: string;
+}
+
+interface Chat {
+  id: string;
+  name: string;
+  type: string;
+  participants: User[];
+}
+
 export class ChatService {
-  private static baseUrl = 'http://localhost:8000/chat';
+  private static baseUrl = 'http://localhost:8000';
   private static userId = 'test-user-1'; // Temporary user ID for testing
+  private static timeout = 10000; // 10 second timeout
 
   private static async makeRequest(url: string, options?: RequestInit) {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), this.timeout);
+
     try {
       // Get the auth token from localStorage
       const token = localStorage.getItem('auth_token');
@@ -19,63 +38,54 @@ export class ChatService {
           'Authorization': `Bearer ${token || ''}`,
           ...options?.headers,
         },
-        credentials: 'include',  // Include cookies in the request
+        credentials: 'include',
+        signal: controller.signal
       });
+      
+      clearTimeout(timeoutId);
       
       if (!response.ok) {
         const errorData = await response.text();
         console.error('Server error:', errorData);
-        throw new Error('Request failed');
+        if (response.status === 401) {
+          throw new Error('Not authenticated');
+        } else if (response.status === 404) {
+          throw new Error('Not found');
+        } else {
+          throw new Error(errorData || 'Request failed');
+        }
       }
       
       return await response.json();
     } catch (error) {
+      clearTimeout(timeoutId);
+      if (error.name === 'AbortError') {
+        throw new Error('Request timed out');
+      }
       console.error('Request failed:', error);
       throw error;
     }
   }
 
-  static async createChat(members: string[]): Promise<string> {
-    const data = await this.makeRequest(`${this.baseUrl}/create`, {
-      method: 'POST',
-      body: JSON.stringify({
-        participant_ids: [this.userId],
-        name: "New Chat",
-        type: "direct"
-      }),
+  static async searchUsers(query: string): Promise<User[]> {
+    return this.makeRequest(`${this.baseUrl}/users/search?query=${encodeURIComponent(query)}`);
+  }
+
+  static async createDirectChat(userId: string): Promise<Chat> {
+    return this.makeRequest(`${this.baseUrl}/chat/direct/${userId}`, {
+      method: 'POST'
     });
-    
-    return data.id;
   }
 
   static async getMessages(chatId: string): Promise<Message[]> {
-    const messages = await this.makeRequest(`${this.baseUrl}/${chatId}/messages`);
-    
-    return messages.map((msg: any) => ({
-      id: msg.id,
-      senderId: msg.sender.id,
-      content: msg.content,
-      timestamp: new Date(msg.timestamp),
-      read: true
-    }));
+    return this.makeRequest(`${this.baseUrl}/chat/${chatId}/messages`);
   }
 
-  static async sendMessage(message: { senderId: string, content: string, chatId: string }): Promise<Message> {
-    const data = await this.makeRequest(`${this.baseUrl}/message`, {
+  static async sendMessage(chatId: string, content: string): Promise<Message> {
+    return this.makeRequest(`${this.baseUrl}/chat/message`, {
       method: 'POST',
-      body: JSON.stringify({
-        chat_id: message.chatId,
-        content: message.content
-      }),
+      body: JSON.stringify({ chat_id: chatId, content })
     });
-
-    return {
-      id: data.id,
-      senderId: data.sender.id,
-      content: data.content,
-      timestamp: new Date(data.timestamp),
-      read: false
-    };
   }
 
   static async markAsRead(messageIds: string[]): Promise<void> {
