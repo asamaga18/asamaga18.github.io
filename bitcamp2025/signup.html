@@ -48,7 +48,8 @@
         Google ID: ${userData.sub}
       `;
       
-      // Here’s where you could POST user data to your backend.
+      // Redirect to home.html automatically after successful sign-in
+      window.location.href = "home.html"; // Redirect to home.html
     }
 
     function parseJwt(token) {
@@ -66,7 +67,7 @@
 
   <!-- Google Identity Button -->
   <div id="g_id_onload"
-    data-client_id="YOUR_GOOGLE_CLIENT_ID"
+    data-client_id="339592120472-nlm1adirm0hrm2b4okpb5lqalk4bpnci.apps.googleusercontent.com"
     data-context="signup"
     data-callback="handleCredentialResponse"
     data-auto_prompt="false">
