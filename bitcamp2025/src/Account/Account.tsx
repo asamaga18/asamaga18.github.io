@@ -7,24 +7,24 @@ import './Account';
 const Account = () => {
  
 const [location, setLocation] = useState(() => {
-        const storedLocation = localStorage.getItem('location');
-        return storedLocation ? JSON.parse(storedLocation) : [];
+    const storedLocation = localStorage.getItem('location');
+    return storedLocation ? JSON.parse(storedLocation) : [];
     });    
 const [produce, setProduce] = useState(() => {
-        const storedLocation = localStorage.getItem('produce');
-        return storedLocation ? JSON.parse(storedLocation) : [];
+    const storedLocation = localStorage.getItem('produce');
+    return storedLocation ? JSON.parse(storedLocation) : [];
     });
 const [extra1, setExtra1] = useState(() => {
-        const storedLocation = localStorage.getItem('extra1');
-        return storedLocation ? JSON.parse(storedLocation) : [];
+    const storedLocation = localStorage.getItem('extra1');
+    return storedLocation ? JSON.parse(storedLocation) : [];
     });
 const [extra2, setExtra2] = useState(() => {
-        const storedLocation = localStorage.getItem('extra2');
-        return storedLocation ? JSON.parse(storedLocation) : [];
+    const storedLocation = localStorage.getItem('extra2');
+    return storedLocation ? JSON.parse(storedLocation) : [];
     });
 const [extra3, setExtra3] = useState(() => {
-        const storedLocation = localStorage.getItem('extra3');
-        return storedLocation ? JSON.parse(storedLocation) : [];
+    const storedLocation = localStorage.getItem('extra3');
+    return storedLocation ? JSON.parse(storedLocation) : [];
     });
 const [email, setEmail] = useState(() => localStorage.getItem('email') || '');
 const [password, setPassword] = useState(() => localStorage.getItem('password') || '');
