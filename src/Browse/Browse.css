@@ -4,9 +4,8 @@
   background-color: #f8f8f8;
 } */
 
-.browse-container{
+body{
   background-image: url('/backgroundimage.png'); /* ✅ use path from public folder */
-
 }
 
 .browse-nav {
