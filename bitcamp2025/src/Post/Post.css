@@ -1,0 +1,95 @@
+/* General Layout */
+body {
+    margin: 0;
+    display: flex;
+    height: 100vh;
+    background-color: #f4f1ed;
+    font-family: sans-serif;
+  }
+  
+  /* Sidebar */
+  .sidebar {
+    width: 80px;
+    background-color: #bca397;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    gap: 20px;
+  }
+  
+  .plus-btn {
+    font-size: 24px;
+    background: #8b4431;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+  }
+  
+  .menu {
+    color: #682f2d;
+    text-align: center;
+    font-size: 12px;
+  }
+  
+  /* Main Content Area */
+  .main-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+  }
+  
+  /* Form Styling */
+  .post-container {
+    max-width: 600px;
+    width: 100%;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .image-container {
+    background-color: #eee;
+    padding: 16px;
+    text-align: center;
+    border-radius: 6px;
+  }
+  
+  .input,
+  .textarea {
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .textarea {
+    resize: vertical;
+    height: 100px;
+  }
+  
+  .submit-btn {
+    background-color: #8b4431;
+    color: white;
+    padding: 10px;
+    border: none;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .submit-btn:hover {
+    background-color: #682f2d;
+  }
+  
