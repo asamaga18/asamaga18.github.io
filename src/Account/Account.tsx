@@ -204,6 +204,12 @@ return (
             <option value="private">Private</option>
         </select>
         </div>
+
+        {/* by hand */}
+        <div className="form-group">
+        {/* <label htmlFor="privacy">Log out?:</label> */}
+        <button>Log Out</button>
+        </div>
     </form>
     </div>
 </div>
