@@ -30,6 +30,7 @@ const Signup = () => {
     window.handleCredentialResponse = (response) => {
       const data = parseJwt(response.credential);
       console.log("User signing up:", data);
+      localStorage.setItem('firstName', data.given_name); // Store first name
       sendToBackend(data);
       navigate('/home');
     };
