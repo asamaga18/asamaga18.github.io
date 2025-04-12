@@ -19,11 +19,11 @@
   top: 0;
   z-index: 100;  
 }
-/* stacked buttons on the right */
+
 .button-column {
   display: flex;
   align-items: center;
-  gap: 10px; /* space between buttons */
+  gap: 10px;
 }
 
 .logout-button {
@@ -46,7 +46,7 @@
 .nav-left {
   display: flex;
   align-items: center;
-  gap: 12px; /* 👈 adjust gap between logo and title */
+  gap: 12px;
 }
 
 .nav-logo {
@@ -85,11 +85,11 @@
 .hero-section {
   text-align: center;
   padding: 4rem 0;
-  border: 2px solid #ffffff;  /* color and thickness of border */
-  padding: 12px 20px;         /* space inside the box */
-  border-radius: 8px;         /* rounded corners */
-  background-color: #713237;  /* light background color */
-  display: inline-block;      /* so the box wraps around just the text */
+  border: 2px solid #ffffff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  background-color: #713237;
+  display: inline-block;
   font-weight: bold;
 }
 
@@ -239,7 +239,6 @@
   font-size: 1.3rem;
 }
 
-/* Stats Card */
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -263,7 +262,6 @@
   font-size: 0.9rem;
 }
 
-/* Activity Card */
 .activity-list {
   display: flex;
   flex-direction: column;
