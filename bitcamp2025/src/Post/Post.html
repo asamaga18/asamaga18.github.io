@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Your Post</title>
+  <link rel="stylesheet" href="Post.css" />
+</head>
+<body>
+  <div class="sidebar">
+    <button>+</button>
+    <div class="label"><div class="Browse">★</div>Browse</div>
+    <div class="label"><div class="Communities">★</Communities>Label</div>
+    <div class="label"><div class="Post">★</div>Post</div>
+    <div class="label"><div class="Settings">★</div>Settings</div>
+  </div>
+
+  <div class="main">
+    <div class="header">Create your post</div>
+    <form class="post-container">
+      <div class="image-container">
+        <label for="imageUpload">Upload image:</label><br />
+        <input type="file" id="imageUpload" accept="image/*" />
+        <div id="imagePreview"></div>
+      </div>
+
+      <input type="text" id="title" class="input" placeholder="Title (e.g., Baby Tomatoes)" required />
+      <input type="text" id="quantity" class="input" placeholder="Quantity (e.g., 30)" required />
+      <input type="text" id="location" class="input" placeholder="Location (e.g., College Park)" required />
+      <input type="text" id="price" class="input" placeholder="Price (e.g., $7 or your best offer)" required />
+      <textarea id="description" class="textarea" placeholder="Description..." required></textarea>
+
+      <button type="submit" class="submit-btn">Post</button>
+    </form>
+  </div>
+
+  <script>
+    // Basic image preview
+    document.getElementById('imageUpload').addEventListener('change', function (e) {
+      const preview = document.getElementById('imagePreview');
+      preview.innerHTML = '';
+      const file = e.target.files[0];
+      if (file) {
+        const img = document.createElement('img');
+        img.src = URL.createObjectURL(file);
+        img.style.width = '250px';
+        img.style.height = '250px';
+        img.style.objectFit = 'cover';
+        preview.appendChild(img);
+      }
+    });
+  </script>
+</body>
+</html>
