@@ -8,6 +8,15 @@ const Sidebar = () => {
 
  return (
    <div className="sidebar">
+
+      <img 
+          src="/thetomatotrade/thetomatotradelogo.png" 
+          alt="The Tomato Trade Logo" 
+          className="sidebar-logo" 
+          width="50" 
+          height="50" 
+        />
+
      <Link to="/post" className="plus-btn">
             <i className="fa-solid fa-plus"></i> {/* <- corrected class */}
      </Link>
