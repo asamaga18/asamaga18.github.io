@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://dhruvpat27.github.io/bitcamp2025",
+  "homepage": "https://asamaga18.github.io/bitcamp2025",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
