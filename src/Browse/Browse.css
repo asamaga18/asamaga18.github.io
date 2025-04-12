@@ -177,7 +177,7 @@
 }
 
 .category-btn.active {
-  background-color: #4a90e2;
+  background-color: #713237;
   color: white;
 }
 
@@ -236,7 +236,7 @@
 .view-details-btn {
   display: inline-block;
   padding: 0.8rem 1.5rem;
-  background-color: #4a90e2;
+  background-color: #713237;
   color: white;
   text-decoration: none;
   border-radius: 6px;
@@ -244,7 +244,7 @@
 }
 
 .view-details-btn:hover {
-  background-color: #357abd;
+  background-color: #713237;
 }
 
 /* Responsive Design */
