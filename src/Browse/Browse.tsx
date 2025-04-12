@@ -51,7 +51,9 @@ const Browse: React.FC = () => {
     <div className="browse-container">
       <Sidebar />
       <div className="browse-header">
-        <h1>Browse Available Food</h1>
+        <div className="browse-nav">
+          <h1>Browse Available Food</h1>
+        </div>
         <div className="search-filters">
           <input
             type="text"
