@@ -65,7 +65,7 @@ const Post = () => {
                 ) : (
                   <label className="upload-label" htmlFor="image">
                     <i className="fas fa-cloud-upload-alt"></i>
-                    <span>Click to upload or drag and drop</span>
+                    <span id="clicktoupload">Click to upload or drag and drop</span>
                   </label>
                 )}
                 <input
@@ -92,7 +92,7 @@ const Post = () => {
             </div>
 
             <div className="form-group">
-              <label htmlFor="category">Cateogy</label>
+              <label htmlFor="category">Category</label>
               <select
                 id="location"
                 name="location"
@@ -133,7 +133,7 @@ const Post = () => {
                 onChange={handleInputChange}
                 required
               >
-                <option value="">Select a town</option>
+                <option value="">Select a Town</option>
                 <option value="University Park">University Park, MD</option>
                 <option value="College Park">College Park, MD</option>
                 <option value="Hyattsville">Hyattsville, MD</option>
@@ -174,10 +174,12 @@ const Post = () => {
               />
             </div>
 
-            <button type="submit" className="submit-btn">
-              <i className="fas fa-paper-plane"></i>
-              Post Item
-            </button>
+            <div className="button-wrapper">
+              <button className="submit-btn">
+                <i className="fas fa-paper-plane"></i>
+                Post Item
+              </button>
+            </div>
           </form>
         </div>
       </div>

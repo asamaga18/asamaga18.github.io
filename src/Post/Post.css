@@ -2,7 +2,7 @@
 body {
     margin: 0;
     min-height: 100vh;
-    background-color: #f8f9fa;
+    background-image: url('/backgroundimage.png'); /* ✅ use path from public folder */
     font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
     color: #2c3e50;
   }
@@ -101,8 +101,9 @@ body {
     padding: 15px 20px;
     border-radius: 10px;
     margin: 0 0 25px 0;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     font-weight: 600;
+    text-align: center;
   }
   
   .post-form {
@@ -116,11 +117,19 @@ body {
     flex-direction: column;
     gap: 8px;
   }
+
+
   
-  .form-group label {
-    font-weight: 500;
-    color: #34495e;
+  .form-group > label {
+    color: #ffffff;
     font-size: 0.9rem;
+    border: 2px solid #713237;
+    padding: 12px 20px;
+    border-radius: 8px;
+    background-color: #713237;
+    font-weight: bold;
+    display: inline-block;
+    text-align: center;
   }
   
   .image-container {
@@ -166,6 +175,7 @@ body {
     border-radius: 8px;
     border: 1px solid #dee2e6;
     width: 100%;
+    text-align: center;
     box-sizing: border-box;
     transition: border-color 0.2s, box-shadow 0.2s;
   }
@@ -182,6 +192,14 @@ body {
     min-height: 120px;
   }
   
+  .button-wrapper {
+    border: 2px dashed #713237;
+    padding: 2px; /* space between border and button */
+    border-radius: 12px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
   .submit-btn {
     background-color: #713237;
     color: white;
@@ -190,12 +208,12 @@ body {
     font-size: 1rem;
     border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.2s, transform 0.2s;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: px;
     font-weight: 500;
+    width: 100%; /* 👈 makes the button expand */
   }
   
   .submit-btn:hover {
