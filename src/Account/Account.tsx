@@ -176,6 +176,7 @@ const Account = () => {
                     </form>
                 </div>
                 <div className="section2">
+                    <div className="dotted-line"></div>
                     <div className="display-container">
                         <h3>Display:</h3>
                     </div>
