@@ -1,7 +1,17 @@
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import './Home.css';
 
 const Home = () => {
+  const [firstName, setFirstName] = useState<string | null>(null);
+
+  useEffect(() => {
+    const storedName = localStorage.getItem('firstName');
+    if (storedName) {
+      setFirstName(storedName);
+    }
+  }, []);
+
   return (
     <div className="home-container">
       <nav className="home-nav">
@@ -16,7 +26,7 @@ const Home = () => {
       
       <main className="home-content">
         <section className="hero-section">
-          <h1>Welcome to The Tomato Trade</h1>
+          <h1>Welcome{firstName ? `, ${firstName}` : ' to The Tomato Trade'}</h1>
           <p>Share and discover fresh produce in your community</p>
         </section>
         
@@ -39,4 +49,4 @@ const Home = () => {
   );
 };
 
-export default Home; 
+export default Home;
