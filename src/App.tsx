@@ -1,4 +1,4 @@
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Login from './auth/Login';
 import Signup from './auth/Signup';
 import Post from './Post/Post';
@@ -13,8 +13,8 @@ const LandingPage = () => (
       <h1>Welcome to The Tomato Trade</h1>
       <p className="landing-subtitle">Share your excess produce with your community</p>
       <div className="landing-buttons">
-        <a href="/login" className="landing-btn primary">Sign In</a>
-        <a href="/signup" className="landing-btn secondary">Create Account</a>
+        <Link to="/login" className="landing-btn primary">Sign In</Link>
+        <Link to="/signup" className="landing-btn secondary">Create Account</Link>
       </div>
     </div>
   </div>

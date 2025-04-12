@@ -7,9 +7,9 @@ const Home = () => {
       <nav className="home-nav">
         <div className="nav-logo">The Tomato Trade</div>
         <div className="nav-links">
-          <Link to="/browse" className="nav-link">Browse</Link>
-          <Link to="/post" className="nav-link">Create Post</Link>
-          <Link to="/messages" className="nav-link">Messages</Link>
+          <Link to="/thetomatotrade/browse" className="nav-link">Browse</Link>
+          <Link to="/thetomatotrade/post" className="nav-link">Create Post</Link>
+          <Link to="/thetomatotrade/messages" className="nav-link">Messages</Link>
         </div>
       </nav>
       
@@ -20,15 +20,15 @@ const Home = () => {
         </section>
         
         <section className="quick-actions">
-          <Link to="/browse" className="action-card">
+          <Link to="/thetomatotrade/browse" className="action-card">
             <h3>Browse Produce</h3>
             <p>Find available produce near you</p>
           </Link>
-          <Link to="/post" className="action-card">
+          <Link to="/thetomatotrade/post" className="action-card">
             <h3>Share Produce</h3>
             <p>Post items you want to share</p>
           </Link>
-          <Link to="/messages" className="action-card">
+          <Link to="/thetomatotrade/messages" className="action-card">
             <h3>Messages</h3>
             <p>Connect with other users</p>
           </Link>
