@@ -8,17 +8,17 @@ import Messaging from './Messaging/Messaging';
 import Account from './Account/Account';
 import Browse from './Browse/Browse';
 
-// import BrowseGroupsIcon from './Browse Groups.png';
-// import HomeIcon from './Home.png';
-// import AccountIcon from './Account.png';
+import BrowseIcon from './BrowseIcon.png';
+import MessagingIcon from './MessagingIcon.png';
+import AccountIcon from './AccountIcon.png';
 
 function Sidebar() {
   // const [open, setOpen] = useState(true);
   //If you have any unread messages, they show up in here? In that case, we'd append those chats here.
   const Menus = [
-    { title: 'Account', path: '/account', src: Account, gap: true },
-    { title: 'Messaging', path: '/messaging', src: Messaging},
-    { title: 'Browse', path: '/browse', src: Browse },
+    { title: 'Account', path: '/account', src: AccountIcon, gap: true },
+    { title: 'Messaging', path: '/messaging', src: MessagingIcon},
+    { title: 'Browse', path: '/browse', src: BrowseIcon },
   ];
   // <img src={"/the folder/${Menu.title}.file format of the image"} />
   // name image file accordingly
