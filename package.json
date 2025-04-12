@@ -5,12 +5,10 @@
   "type": "module",
   "homepage": "https://asamaga18.github.io/thetomatotrade",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview",
+    "start": "vite",            
+    "build": "vite build",         
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist"    
   },
   "dependencies": {
     "@types/react-router-dom": "^5.3.3",
