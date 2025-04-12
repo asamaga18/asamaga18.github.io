@@ -92,6 +92,25 @@ const Post = () => {
             </div>
 
             <div className="form-group">
+              <label htmlFor="category">Cateogy</label>
+              <select
+                id="location"
+                name="location"
+                className="input"
+                value={formData.location}
+                onChange={handleInputChange}
+                required
+              >
+                <option value="">Select a Category</option>
+                <option value="Vegetables">Vegetables</option>
+                <option value="Fruits">Fruits</option>
+                <option value="Canned">Canned</option>
+                <option value="Dairy">Dairy</option>
+                <option value="Grains">Grains</option>
+              </select>
+            </div>
+
+            <div className="form-group">
               <label htmlFor="quantity">Quantity</label>
               <input
                 type="number"
@@ -106,28 +125,41 @@ const Post = () => {
 
             <div className="form-group">
               <label htmlFor="location">Location</label>
-              <input
-                type="text"
+              <select
                 id="location"
                 name="location"
                 className="input"
                 value={formData.location}
                 onChange={handleInputChange}
                 required
-              />
+              >
+                <option value="">Select a town</option>
+                <option value="University Park">University Park, MD</option>
+                <option value="College Park">College Park, MD</option>
+                <option value="Hyattsville">Hyattsville, MD</option>
+                <option value="Riverdale Park">Riverdale Park, MD</option>
+                <option value="Greenbelt">Greenbelt, MD</option>
+                <option value="Adelphi">Adelphi, MD</option>
+                <option value="Beltsville">Beltsville, MD</option>
+              </select>
             </div>
 
             <div className="form-group">
               <label htmlFor="price">Price</label>
-              <input
-                type="number"
-                id="price"
-                name="price"
-                className="input"
-                value={formData.price}
-                onChange={handleInputChange}
-                required
-              />
+              <div className="price-input-wrapper">
+                <span className="dollar-sign">$</span>
+                <input
+                  type="number"
+                  id="price"
+                  name="price"
+                  className="input"
+                  value={formData.price}
+                  onChange={handleInputChange}
+                  required
+                  step="0.01" // ✅ allows decimal values
+                  min="0"
+                />
+              </div>
             </div>
 
             <div className="form-group">

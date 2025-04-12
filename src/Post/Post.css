@@ -206,6 +206,23 @@ body {
   .submit-btn:active {
     transform: translateY(0);
   }
+
+  .price-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .dollar-sign {
+    position: absolute;
+    left: 10px;
+    color: #555;
+    font-size: 14px;
+  }
+  
+  .input[type="number"] {
+    padding-left: 20px; /* 👈 makes room for $ */
+  }
   
   /* Responsive Design */
   @media (max-width: 768px) {

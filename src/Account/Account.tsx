@@ -46,7 +46,13 @@ const produces = [
 { value: 'Lettuce', label: 'Lettuce' },
 { value: 'Celery', label: 'Celery' },
 { value: 'Spinach', label: 'Spinach' },
-{ value: 'Dance', label: 'Dance' }
+{ value: 'Broccoli', label: 'Broccoli' },
+{ value: 'Cauliflower', label: 'Cauliflower' },
+{ value: 'Strawberries', label: 'Strawberries' },
+{ value: 'Blueberries', label: 'Blueberries' },
+{ value: 'Parsley', label: 'Parsley' },
+{ value: 'Squash', label: 'Squash' },
+{ value: 'Pumpkin', label: 'Pumpkin' }
 ];
 
 const extra1s = [
@@ -115,7 +121,7 @@ return (
     <div className="header1">Account</div>
     <form>
         <div className="form-group">
-        <label htmlFor="location">Location:</label>
+        <label id="labelName" htmlFor="location">Location:</label>
         <Select
             id="location"
             isMulti
@@ -125,7 +131,7 @@ return (
         />
         </div>
         <div className="form-group">
-        <label htmlFor="produce">Produce:</label>
+        <label id="labelName" htmlFor="produce">Produce:</label>
         <Select
             id="produce"
             isMulti
@@ -135,7 +141,7 @@ return (
         />
         </div>
         <div className="form-group">
-        <label htmlFor="extra1">Extra 1:</label>
+        <label id="labelName" htmlFor="extra1">Extra 1:</label>
         <Select
             id="extra1"
             isMulti
@@ -145,7 +151,7 @@ return (
         />
         </div>
         <div className="form-group">
-        <label htmlFor="extra2">Extra 2:</label>
+        <label id="labelName" htmlFor="extra2">Extra 2:</label>
         <Select
             id="extra2"
             isMulti
@@ -155,7 +161,7 @@ return (
         />
         </div>
         <div className="form-group">
-        <label htmlFor="extra3">Extra 3:</label>
+        <label id="labelName" htmlFor="extra3">Extra 3:</label>
         <Select
             id="extra3"
             isMulti
@@ -170,7 +176,7 @@ return (
     <h3>Settings</h3>
     <form>
         <div className="form-group">
-        <label htmlFor="notifications">Notifications:</label>
+        <label id="labelName" htmlFor="notifications">Notifications:</label>
         <select
             id="notifications"
             value={notifications}
@@ -182,7 +188,7 @@ return (
         </select>
         </div>
         <div className="form-group">
-        <label htmlFor="language">Language:</label>
+        <label id="labelName" htmlFor="language">Language:</label>
         <select
             id="language"
             value={language}
@@ -196,7 +202,7 @@ return (
         </select>
         </div>
         <div className="form-group">
-        <label htmlFor="privacy">Privacy Settings:</label>
+        <label id="labelName" htmlFor="privacy">Privacy Settings:</label>
         <select
             id="privacy"
             value={privacy}
@@ -210,7 +216,7 @@ return (
         {/* by hand */}
         <div className="form-group">
         {/* <label htmlFor="privacy">Log out?:</label> */}
-        <button>Log Out(implement)</button>
+        <button id="logOutButton">Log Out</button>
         </div>
     </form>
     </div>
