@@ -5,13 +5,45 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gardening App</title>
+    <style>
+        
+      .container {
+          display: flex;
+          place-items: center;
+          position: absolute;
+          top: 50%;
+          left: 36%;
+          
+      }
+
+      #title {
+          font-size: 150%;
+          text-align: center;
+          color:cornflowerblue;
+          position: absolute;
+          top: 30%;
+
+      }
+
+      a.button {
+          text-align: center;
+          padding: 10px 60px;
+          font-size: 200%;
+          border: 1px outset buttonborder;
+          border-radius: 3px;
+          color: white;
+          background-color: grey;
+          text-decoration: none;
+      }    
+  </style>
   </head>
   <body>
     <div id="root"></div>
-    <h1></h1>
-      <h1>Title</h1>
-      <p>Log in</p>
-
+    <div class = "container">
+      <a href = 'login.html' class = "button"> Log In </a>
+      <a href = 'signup.html' class = "button"> Sign Up </a>
+      <a href = 'home.html' class = "button"> Skip </a>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
