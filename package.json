@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://www.thetomatotrade.tech",
+  "homepage": "https://asamaga18.github.io/thetomatotrade",
   "scripts": {
     "start": "vite",
     "build": "vite build",
