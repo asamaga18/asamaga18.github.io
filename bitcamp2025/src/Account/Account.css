@@ -1,0 +1,86 @@
+.account-page {
+    display: flex;
+    justify-content: space-between;
+    align-items: left;
+    color: #F9F6F1;;
+}
+
+.account-container {
+    width: 580px;
+    height: 550px;
+    margin: 0 auto;
+    margin-right: 40px;
+    padding: 20px;
+    border: 1px solid #000000;
+    border-radius: 8px;
+    background-color: #713237;
+}
+
+.settings-container {
+    width: 580px;
+    height: 550px;
+    margin: 0 auto;
+    margin-right: 40px;
+    padding: 20px;
+    border: 1px solid #000000;
+    border-radius: 8px;
+    background-color: #713237;
+}
+
+.header1 {
+    background-color: #713237;
+    padding: 20px;
+    text-align: left;
+    border-bottom: 1px solid #230404;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-top: 40px;
+}
+
+h1 {
+    font-size: 48px;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 48px;
+    font-weight: normal;
+    text-align: left;
+    margin-bottom: 20px;
+    margin-top: 60px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+  
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input {
+    width: 560px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 0px;
+    margin-top: 20px;
+}
+
+select {
+    width: 578px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 0px;
+}
+
+option {
+    padding: 20px;
+}
