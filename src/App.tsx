@@ -5,6 +5,7 @@ import Post from './Post/Post';
 import Chat from './Messaging/Chat';
 import Home from './Home/Home';
 import Browse from './Browse/Browse';
+import Account from './Account/Account';
 import './App.css';
 
 const LandingPage = () => (
@@ -31,6 +32,7 @@ const App = () => {
         <Route path="/browse" element={<Browse />} />
         <Route path="/post" element={<Post />} />
         <Route path="/messages" element={<Chat />} />
+        <Route path="/account" element={<Account />} />
       </Routes>
     </Router>
   );

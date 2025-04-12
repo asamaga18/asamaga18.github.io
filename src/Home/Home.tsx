@@ -10,6 +10,7 @@ const Home = () => {
           <Link to="/browse" className="nav-link">Browse</Link>
           <Link to="/post" className="nav-link">Create Post</Link>
           <Link to="/messages" className="nav-link">Messages</Link>
+          <Link to="/account" className="nav-link">Account</Link>
         </div>
       </nav>
       
