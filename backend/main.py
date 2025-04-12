@@ -12,6 +12,11 @@ from models import (
 from database import init_db
 
 app = FastAPI(title="Chat API")
+from fastapi import FastAPI
+from routers import chat
+from post_routes import router as post_router
+
+app = FastAPI()
 
 # Configure CORS
 app.add_middleware(
@@ -127,3 +132,13 @@ async def health_check():
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+# Register chat-related routes
+app.include_router(chat.router)
+
+@app.get("/")
+def root():
+    return {"msg": "FastAPI with MongoDB is live"}
+
+
+
+app.include_router(post_router)

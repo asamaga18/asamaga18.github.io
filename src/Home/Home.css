@@ -9,6 +9,7 @@
   
 }
 .home-nav {
+  display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
@@ -16,9 +17,36 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
-  z-index: 100;
-  
-  
+  z-index: 100;  
+}
+
+.button-column {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logout-button {
+  background-color: white;
+  color: #713237;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.logout-button:hover {
+  background-color: #f2e2e2;
+  transform: translateY(-1px);
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .nav-logo {
@@ -28,6 +56,7 @@
   text-align: center;
   justify-content: center;
 }
+
 
 .nav-links {
   display: flex;
@@ -56,11 +85,11 @@
 .hero-section {
   text-align: center;
   padding: 4rem 0;
-  border: 2px solid #ffffff;  /* color and thickness of border */
-  padding: 12px 20px;         /* space inside the box */
-  border-radius: 8px;         /* rounded corners */
-  background-color: #713237;  /* light background color */
-  display: inline-block;      /* so the box wraps around just the text */
+  border: 2px solid #ffffff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  background-color: #713237;
+  display: inline-block;
   font-weight: bold;
 }
 
@@ -68,6 +97,9 @@
   font-size: 2rem;
   color: #713237;
   margin-bottom: 10px;
+  border-style: dashed;
+  border-radius: 5px;
+  padding: 10px; 
 }
 
 .hero-section h1 {
@@ -104,6 +136,7 @@
 .action-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: #f2e2e2;
 }
 
 .action-card h3 {
@@ -118,6 +151,8 @@
 .action-card p {
   color: #7f8c8d;
 }
+
+
 
 @media (max-width: 768px) {
   .home-nav {
@@ -204,7 +239,6 @@
   font-size: 1.3rem;
 }
 
-/* Stats Card */
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -228,7 +262,6 @@
   font-size: 0.9rem;
 }
 
-/* Activity Card */
 .activity-list {
   display: flex;
   flex-direction: column;
