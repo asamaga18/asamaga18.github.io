@@ -4,34 +4,93 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Tomato Barter Post</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="Post.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 </head>
 <body>
-  <div class="sidebar">
-    <button class="plus-btn">+</button>
+  <nav class="sidebar">
+    <button class="plus-btn" aria-label="Create new post">
+      <i class="fas fa-plus"></i>
+    </button>
     <div class="menu">
-      <p>★ Browse</p>
-      <p>★Label<br>★ Post</p>
-      <p>★ Settings</p>
+      <a href="#" class="menu-item"><i class="fas fa-compass"></i> Browse</a>
+      <a href="#" class="menu-item"><i class="fas fa-tag"></i> Label</a>
+      <a href="#" class="menu-item"><i class="fas fa-pen"></i> Post</a>
+      <a href="#" class="menu-item"><i class="fas fa-cog"></i> Settings</a>
     </div>
-  </div>
+  </nav>
 
-  <div class="main-content">
+  <main class="main-content">
     <div class="post-container">
-      <h2 style="background-color: #682f2d; color: white; padding: 10px; border-radius: 6px;">Create your post</h2>
+      <h2 class="post-title">Create your post</h2>
 
-      <div class="image-container">
-        <label>Upload image:</label>
-        <input type="file" />
-      </div>
+      <form class="post-form">
+        <div class="image-container">
+          <label for="image-upload" class="upload-label">
+            <i class="fas fa-cloud-upload-alt"></i>
+            <span>Upload image</span>
+          </label>
+          <input type="file" id="image-upload" accept="image/*" class="file-input" />
+        </div>
 
-      <input class="input" placeholder="(e.g. Tomatoes)" />
-      <input class="input" placeholder="(e.g. 30)" />
-      <input class="input" placeholder="(e.g. College Park)" />
-      <input class="input" placeholder="(or your best offer)" />
-      <textarea class="textarea" placeholder="..."></textarea>
-      <button class="submit-btn">Submit</button>
+        <div class="form-group">
+          <label for="item-name">Item Name</label>
+          <input id="item-name" class="input" placeholder="e.g. Tomatoes" />
+        </div>
+
+        <div class="form-group">
+          <label for="quantity">Quantity</label>
+          <input id="quantity" class="input" placeholder="e.g. 30" type="number" />
+        </div>
+
+        <div class="form-group">
+          <label for="location">Location</label>
+          <input id="location" class="input" placeholder="e.g. College Park" />
+        </div>
+
+        <div class="form-group">
+          <label for="offer">Price</label>
+          <input id="offer" class="input" placeholder="e.g. $7 or best offer" />
+        </div>
+
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea id="description" class="textarea" placeholder="Add more details about your item..."></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">
+          <i class="fas fa-paper-plane"></i> Submit Post
+        </button>
+      </form>
     </div>
-  </div>
+  </main>
+  
+  <script>
+    document.querySelector('.post-form').addEventListener('submit', function (event) {
+    event.preventDefault(); // Prevent form submission
+
+    // Collect form data
+    const formData = {
+        itemName: document.getElementById('item-name').value,
+        quantity: document.getElementById('quantity').value,
+        location: document.getElementById('location').value,
+        offer: document.getElementById('offer').value,
+        description: document.getElementById('description').value,
+    };
+
+    // Convert to JSON
+    const json = JSON.stringify(formData, null, 2);
+
+    // Log the JSON to the console
+    console.log(json);
+
+    // Optionally, send the JSON to a server
+    // fetch('/api/posts', {
+    //     method: 'POST',
+    //     headers: { 'Content-Type': 'application/json' },
+    //     body: json,
+    // });
+    });
+  </script>
 </body>
 </html>
