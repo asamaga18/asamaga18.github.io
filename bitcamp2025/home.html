@@ -3,11 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Home</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f8f8f8;
+            font-family: Arial, sans-serif;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 1rem;
+        }
+
+        button {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 8px;
+            background-color: #8B4513;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        button:hover {
+            background-color: #6b3410;
+        }
+    </style>
 </head>
 <body>
-    <a href="\src\Post\Post.html">
-        <button>Go to Post</button>
-      </a>
+    <div class="button-container">
+        <a href="/src/Post/Post.html">
+            <button>Go to Post</button>
+        </a>
+        <a href="/src/Browse/browse.html">
+            <button>Go to Browse</button>
+        </a>
+    </div>
 </body>
 </html>
