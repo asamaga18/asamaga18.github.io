@@ -210,7 +210,7 @@ return (
         {/* by hand */}
         <div className="form-group">
         {/* <label htmlFor="privacy">Log out?:</label> */}
-        <button>Log Out</button>
+        <button>Log Out(implement)</button>
         </div>
     </form>
     </div>
