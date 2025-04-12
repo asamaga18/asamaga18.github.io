@@ -118,9 +118,7 @@ const Account = () => {
         <div className="account-page">
             <Sidebar />
             <div className="merged-container">
-                <div className="header-container">
-                    Account Settings
-                </div>
+                <div className="header-container">Account Settings</div>
                 <div className="section1">
                     <form>
                         <div className="form-group">
@@ -175,6 +173,7 @@ const Account = () => {
                         </div>
                     </form>
                 </div>
+                <div className="dotted-line"></div>
                 <div className="section2">
                     <div className="display-container">
                         <h3>Display:</h3>

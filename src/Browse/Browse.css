@@ -4,6 +4,20 @@
   background-color: #f8f8f8;
 } */
 
+.browse-container {
+  max-width: 75rem;
+  height: 100vh;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #F9F6F1;
+  border: black solid 0.05rem;
+  border-radius: 8px;
+
+  /* display: flex;
+  justify-content: center;
+  align-items: flex-start; */
+}
+
 body{
   background-image: url('/backgroundimage.png'); /* ✅ use path from public folder */
 }
@@ -12,7 +26,7 @@ body{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: auto;
+  width: 95%;
   padding: 1rem 2rem;
   background-color: #713237;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -20,6 +34,7 @@ body{
   top: 0;
   z-index: 100;
   color: #F9F6F1;
+
 }
 
 .sidebar {
@@ -140,12 +155,6 @@ body{
   color: white;
 }
 
-.browse-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
 .browse-header {
   margin-bottom: 2rem;
 }
@@ -167,7 +176,7 @@ body{
   border: 2px solid #e0e0e0;
   border-radius: 8px;
   font-size: 1rem;
-  width: 100%;
+  width: 97%;
   transition: border-color 0.3s ease;
 }
 
