@@ -15,16 +15,16 @@ const Account = () => {
         const storedLocation = localStorage.getItem('produce');
         return storedLocation ? JSON.parse(storedLocation) : [];
     });
-    const [extra1, setExtra1] = useState(() => {
-        const storedLocation = localStorage.getItem('extra1');
+    const [season, setSeason] = useState(() => {
+        const storedLocation = localStorage.getItem('season');
         return storedLocation ? JSON.parse(storedLocation) : [];
     });
-    const [extra2, setExtra2] = useState(() => {
-        const storedLocation = localStorage.getItem('extra2');
+    const [negotiate, setNegotiation] = useState(() => {
+        const storedLocation = localStorage.getItem('negotiate');
         return storedLocation ? JSON.parse(storedLocation) : [];
     });
-    const [extra3, setExtra3] = useState(() => {
-        const storedLocation = localStorage.getItem('extra3');
+    const [travel, setTravel] = useState(() => {
+        const storedLocation = localStorage.getItem('travel');
         return storedLocation ? JSON.parse(storedLocation) : [];
     });
     const [notifications, setNotifications] = useState(() => localStorage.getItem('notifications') || 'all');
@@ -55,31 +55,23 @@ const Account = () => {
         { value: 'Pumpkin', label: 'Pumpkin' }
     ];
 
-    const extra1s = [
-        { value: 'idk1', label: 'idk1' },
-        { value: 'idk2', label: 'idk2' },
-        { value: 'idk3', label: 'idk3' },
-        { value: 'idk4', label: 'idk4' },
-        { value: 'idk5', label: 'idk5' },
-        { value: 'idk6', label: 'idk6' }
+    const seasons = [
+        { value: 'fall', label: 'fall' },
+        { value: 'summer', label: 'summer' },
+        { value: 'winter', label: 'winter' },
+        { value: 'spring', label: 'spring' }
     ];
 
-    const extra2s = [
-        { value: 'idk1', label: 'idk1' },
-        { value: 'idk2', label: 'idk2' },
-        { value: 'idk3', label: 'idk3' },
-        { value: 'idk4', label: 'idk4' },
-        { value: 'idk5', label: 'idk5' },
-        { value: 'idk6', label: 'idk6' }
+    const negotiates = [
+        { value: 'yes', label: 'yes' },
+        { value: 'no', label: 'no' },
+        { value: 'sometimes', label: 'sometimes' }
     ];
 
-    const extra3s = [
-        { value: 'idk1', label: 'idk1' },
-        { value: 'idk2', label: 'idk2' },
-        { value: 'idk3', label: 'idk3' },
-        { value: 'idk4', label: 'idk4' },
-        { value: 'idk5', label: 'idk5' },
-        { value: 'idk6', label: 'idk6' }
+    const travels = [
+        { value: 'yes', label: 'yes' },
+        { value: 'no', label: 'no' },
+        { value: 'sometimes', label: 'sometimes' }
     ];
 
     useEffect(() => {
@@ -91,16 +83,16 @@ const Account = () => {
     }, [produce]);
 
     useEffect(() => {
-        localStorage.setItem('extra1', JSON.stringify(extra1));
-    }, [extra1]);
+        localStorage.setItem('season', JSON.stringify(season));
+    }, [season]);
 
     useEffect(() => {
-        localStorage.setItem('extra2', JSON.stringify(extra2));
-    }, [extra2]);
+        localStorage.setItem('negotiate', JSON.stringify(negotiate));
+    }, [negotiate]);
 
     useEffect(() => {
-        localStorage.setItem('extra3', JSON.stringify(extra3));
-    }, [extra3]);
+        localStorage.setItem('travel', JSON.stringify(travel));
+    }, [travel]);
 
     useEffect(() => {
         localStorage.setItem('notifications', notifications);
@@ -122,7 +114,7 @@ const Account = () => {
                 <div className="section1">
                     <form>
                         <div className="form-group">
-                            <label id="labelName" htmlFor="location">Location:</label>
+                            <label id ="labelName" htmlFor="location">Location:</label>
                             <Select
                                 id="location"
                                 isMulti
@@ -132,7 +124,7 @@ const Account = () => {
                             />
                         </div>
                         <div className="form-group">
-                            <label id="labelName" htmlFor="produce">Produce:</label>
+                            <label id ="labelName" htmlFor="produce">Produce:</label>
                             <Select
                                 id="produce"
                                 isMulti
@@ -142,33 +134,33 @@ const Account = () => {
                             />
                         </div>
                         <div className="form-group">
-                            <label id="labelName" htmlFor="extra1">Extra 1:</label>
+                            <label id ="labelName" htmlFor="season">Harvesting Season:</label>
                             <Select
-                                id="extra1"
+                                id="season"
                                 isMulti
-                                options={extra1s}
-                                value={extra1}
-                                onChange={setExtra1}
+                                options={seasons}
+                                value={season}
+                                onChange={setSeason}
                             />
                         </div>
                         <div className="form-group">
-                            <label id="labelName" htmlFor="extra2">Extra 2:</label>
+                            <label id ="labelName" htmlFor="negotiate">Willing to Negotiate Pricing:</label>
                             <Select
-                                id="extra2"
+                                id="negotiate"
                                 isMulti
-                                options={extra2s}
-                                value={extra2}
-                                onChange={setExtra2}
+                                options={negotiates}
+                                value={negotiate}
+                                onChange={setNegotiation}
                             />
                         </div>
                         <div className="form-group">
-                            <label id="labelName" htmlFor="extra3">Extra 3:</label>
+                            <label id ="labelName" htmlFor="travel">Willing to Travel for Delivery:</label>
                             <Select
-                                id="extra3"
+                                id="travel"
                                 isMulti
-                                options={extra3s}
-                                value={extra3}
-                                onChange={setExtra3}
+                                options={travels}
+                                value={travel}
+                                onChange={setTravel}
                             />
                         </div>
                     </form>

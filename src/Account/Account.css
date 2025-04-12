@@ -73,7 +73,7 @@ h3 {
     font-size: 2rem;
 }
 
-#location, #produce, #extra1, #extra2, #extra3, #notifications, #language, #privacy {
+#location, #produce, #season, #negotiate, #travel, #notifications, #language, #privacy {
     color: black;
     margin-top: 0;
     text-align: left;
@@ -81,9 +81,11 @@ h3 {
 
 .form-group {
     margin-bottom: 20px;
+    text-align: left;
 }
 
 #labelName {
+    display: block;
     color: #F9F6F1;
     text-align: left;
 }
@@ -93,10 +95,12 @@ label {
     margin-bottom: 5px;
     font-weight: bold;
     color: black;
+    text-align: left;
 }
 
 Select {
     color: black;
+    text-align: left;
 }
 
 input, select {
