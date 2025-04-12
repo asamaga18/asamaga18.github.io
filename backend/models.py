@@ -21,15 +21,25 @@ class Chat(Document):
     
     class Settings:
         name = "chats"
+        use_revision = True
 
 class Message(Document):
-    chat: Link[Chat]
-    sender: Link[User]
     content: str
+    chat_id: PydanticObjectId
+    sender_id: PydanticObjectId
     timestamp: datetime = Field(default_factory=datetime.utcnow)
     
     class Settings:
         name = "messages"
+        use_revision = True
+
+    @property
+    async def chat(self) -> Chat:
+        return await Chat.get(self.chat_id)
+    
+    @property
+    async def sender(self) -> User:
+        return await User.get(self.sender_id)
 
 # Pydantic models for API requests/responses
 class UserResponse(BaseModel):
