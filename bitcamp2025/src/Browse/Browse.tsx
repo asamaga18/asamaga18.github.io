@@ -1,107 +1,96 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Browse.css';
 
-interface Item {
-  id: string;
-  title: string;
-  updatedAt: string;
-}
-
-interface FilterChip {
-  id: string;
-  label: string;
-  isSelected: boolean;
+interface FoodItem {
+  id: number;
+  name: string;
+  location: string;
+  quantity: string;
+  price: string;
+  description: string;
+  image: string;
 }
 
 const Browse: React.FC = () => {
-  const [filterChips, setFilterChips] = useState<FilterChip[]>([
-    { id: '1', label: 'Tomatoes', isSelected: false },
-    { id: '2', label: 'Lettuce', isSelected: true },
-    { id: '3', label: 'Cabbage', isSelected: false },
-    { id: '4', label: 'Peppers', isSelected: false },
-    { id: '5', label: 'Squash', isSelected: false },
-  ]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('all');
 
-  const mockItems: Item[] = Array(15).fill(null).map((_, index) => ({
-    id: index.toString(),
-    title: 'Title',
-    updatedAt: index % 3 === 0 ? 'today' : 
-               index % 3 === 1 ? 'yesterday' : 
-               '2 days ago'
-  }));
+  // Mock data - replace with actual data from your backend
+  const foodItems: FoodItem[] = [
+    {
+      id: 1,
+      name: "Fresh Vegetables",
+      location: "College Park",
+      quantity: "5 lbs",
+      price: "Free",
+      description: "Assorted fresh vegetables from local garden",
+      image: "https://images.unsplash.com/photo-1566385101042-1a0aa0c1268c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
+    },
+    {
+      id: 2,
+      name: "Canned Goods",
+      location: "Baltimore",
+      quantity: "10 cans",
+      price: "$5",
+      description: "Various canned goods including soup and beans",
+      image: "https://images.unsplash.com/photo-1584735175315-9d5df23860e6?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
+    },
+    // Add more mock items as needed
+  ];
 
-  const toggleChip = (chipId: string) => {
-    setFilterChips(chips => 
-      chips.map(chip => 
-        chip.id === chipId ? { ...chip, isSelected: !chip.isSelected } : chip
-      )
-    );
-  };
+  const categories = ['all', 'vegetables', 'fruits', 'canned', 'dairy', 'grains'];
+
+  const filteredItems = foodItems.filter(item => {
+    const matchesSearch = item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         item.description.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesCategory = selectedCategory === 'all' || item.name.toLowerCase().includes(selectedCategory);
+    return matchesSearch && matchesCategory;
+  });
 
   return (
-    <div className="browse-page">
-      <nav className="sidebar">
-        <button className="menu-button">
-          <span className="menu-icon">☰</span>
-        </button>
-        <button className="add-button">
-          <span className="plus-icon">+</span>
-        </button>
-        <div className="nav-items">
-          <div className="nav-item active">
-            <span className="nav-icon">🔍</span>
-            <span>Browse</span>
-          </div>
-          <div className="nav-item">
-            <span className="nav-icon">👥</span>
-            <span>Communities</span>
-          </div>
-          <div className="nav-item">
-            <span className="nav-icon">📝</span>
-            <span>Post</span>
-          </div>
-          <div className="nav-item">
-            <span className="nav-icon">⚙️</span>
-            <span>Settings</span>
+    <div className="browse-container">
+      <div className="browse-header">
+        <h1>Browse Available Food</h1>
+        <div className="search-filters">
+          <input
+            type="text"
+            placeholder="Search food items..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="search-input"
+          />
+          <div className="category-filters">
+            {categories.map(category => (
+              <button
+                key={category}
+                className={`category-btn ${selectedCategory === category ? 'active' : ''}`}
+                onClick={() => setSelectedCategory(category)}
+              >
+                {category.charAt(0).toUpperCase() + category.slice(1)}
+              </button>
+            ))}
           </div>
         </div>
-      </nav>
+      </div>
 
-      <main className="main-content">
-        <header className="top-bar">
-          <button className="back-button">←</button>
-          <h1>Browse</h1>
-          <div className="top-bar-icons">
-            <button className="icon-button">📎</button>
-            <button className="icon-button">📅</button>
-            <button className="icon-button">⋮</button>
-          </div>
-        </header>
-
-        <div className="filter-chips">
-          {filterChips.map(chip => (
-            <button
-              key={chip.id}
-              className={`filter-chip ${chip.isSelected ? 'selected' : ''}`}
-              onClick={() => toggleChip(chip.id)}
-            >
-              {chip.label}
-            </button>
-          ))}
-        </div>
-
-        <div className="items-grid">
-          {mockItems.map(item => (
-            <div key={item.id} className="item-card">
-              <div className="item-placeholder"></div>
-              <div className="item-details">
-                <h3>{item.title}</h3>
-                <p>Updated {item.updatedAt}</p>
-              </div>
+      <div className="food-grid">
+        {filteredItems.map(item => (
+          <div key={item.id} className="food-card">
+            <img src={item.image} alt={item.name} className="food-image" />
+            <div className="food-info">
+              <h3>{item.name}</h3>
+              <p className="location">📍 {item.location}</p>
+              <p className="quantity">Quantity: {item.quantity}</p>
+              <p className="price">Price: {item.price}</p>
+              <p className="description">{item.description}</p>
+              <Link to={`/item/${item.id}`} className="view-details-btn">
+                View Details
+              </Link>
             </div>
-          ))}
-        </div>
-      </main>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

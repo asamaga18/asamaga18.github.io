@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Auth.css';
 
@@ -15,9 +15,8 @@ declare global {
   }
 }
 
-const Signup: React.FC = () => {
+const Signup = () => {
   const navigate = useNavigate();
-  const [userData, setUserData] = useState<UserData | null>(null);
 
   useEffect(() => {
     // Initialize Google Sign-In
@@ -31,16 +30,9 @@ const Signup: React.FC = () => {
     window.handleCredentialResponse = (response) => {
       const data = parseJwt(response.credential);
       console.log("User signed up:", data);
-      setUserData({
-        name: data.name,
-        email: data.email,
-        sub: data.sub
-      });
       
-      // Redirect to home after a brief delay to show the user info
-      setTimeout(() => {
-        navigate('/home');
-      }, 2000);
+      // Redirect to home after successful signup
+      navigate('/home');
     };
 
     return () => {
@@ -60,32 +52,31 @@ const Signup: React.FC = () => {
 
   return (
     <div className="auth-container">
-      <h2>Sign Up with Google</h2>
-      <div
-        id="g_id_onload"
-        data-client_id="339592120472-nlm1adirm0hrm2b4okpb5lqalk4bpnci.apps.googleusercontent.com"
-        data-context="signup"
-        data-callback="handleCredentialResponse"
-        data-auto_prompt="false"
-      ></div>
-      <div
-        className="g_id_signin google-button"
-        data-type="standard"
-        data-shape="rectangular"
-        data-theme="outline"
-        data-text="sign_up_with"
-        data-size="large"
-        data-logo_alignment="left"
-      ></div>
+      <div className="auth-box">
+        <h1>Create Account</h1>
+        <p className="auth-subtitle">Join The Tomato Trade and start sharing</p>
 
-      {userData && (
-        <div className="user-info">
-          <strong>Signed up as:</strong><br />
-          Name: {userData.name}<br />
-          Email: {userData.email}<br />
-          Google ID: {userData.sub}
+        <div
+          id="g_id_onload"
+          data-client_id="339592120472-nlm1adirm0hrm2b4okpb5lqalk4bpnci.apps.googleusercontent.com"
+          data-context="signup"
+          data-callback="handleCredentialResponse"
+          data-auto_prompt="false"
+        ></div>
+        <div
+          className="g_id_signin google-button"
+          data-type="standard"
+          data-shape="rectangular"
+          data-theme="outline"
+          data-text="sign_up_with"
+          data-size="large"
+          data-logo_alignment="left"
+        ></div>
+
+        <div className="auth-footer">
+          Already have an account? <a href="/login">Sign in</a>
         </div>
-      )}
+      </div>
     </div>
   );
 };

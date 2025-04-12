@@ -1,54 +1,39 @@
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import Browse from './Browse/Browse';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './auth/Login';
 import Signup from './auth/Signup';
-import Account from './Account/Account';
+import Post from './post/Post';
+import Chat from './Messaging/Chat';
+import Home from './Home/Home';
+import Browse from './Browse/Browse';
 import './App.css';
 
-function LandingPage() {
-  return (
-    <div className="landing-page">
-      <h1>Welcome to Gardening App</h1>
-      <div className="auth-buttons">
-        <Link to="/login" className="auth-button">Log In</Link>
-        <Link to="/signup" className="auth-button">Sign Up</Link>
-        <Link to="/home" className="auth-button">Skip</Link>
+const LandingPage = () => (
+  <div className="landing-container">
+    <div className="landing-content">
+      <h1>Welcome to The Tomato Trade</h1>
+      <p className="landing-subtitle">Share your excess produce with your community</p>
+      <div className="landing-buttons">
+        <a href="/login" className="landing-btn primary">Sign In</a>
+        <a href="/signup" className="landing-btn secondary">Create Account</a>
       </div>
     </div>
-  );
-}
+  </div>
+);
 
-function HomePage() {
-  return (
-    <div className="home">
-      <h1>Gardening App</h1>
-      <div className="nav-buttons">
-        <Link to="/post" className="nav-button">Go to Post</Link>
-        <Link to="/browse" className="nav-button">Go to Browse</Link>
-        <Link to="/account" className="nav-button">Go to Account</Link>
-      </div>
-    </div>
-  );
-}
-
-function App() {
+const App = () => {
   return (
     <Router>
-      <div className="app">
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/home" element={<HomePage />} />
-          <Route path="/browse" element={<Browse />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/account" element={<Account />} />
-          <Route path="/login" element={<div>Login Page (Coming Soon)</div>} />
-          <Route path="/signup" element={<div>Signup Page (Coming Soon)</div>} />
-          <Route path="/post" element={<div>Post Page (Coming Soon)</div>} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/browse" element={<Browse />} />
+        <Route path="/post" element={<Post />} />
+        <Route path="/messages" element={<Chat />} />
+      </Routes>
     </Router>
   );
-}
+};
 
 export default App;
