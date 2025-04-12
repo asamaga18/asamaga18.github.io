@@ -1,9 +1,10 @@
+
+
 body {
+  background-image: url('/backgroundimage.png');
   margin: 0;
-  min-height: 100vh; 
   font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-  color: #2c3e50;
-  
+  display: flex;
 }
 
 /* Sidebar */
@@ -68,30 +69,31 @@ body {
 .menu-item i {
   font-size: 18px;
 }
+.page-container {
+  background-color: transparent !important;
+}
 
+.main-content {
+  background-color: transparent !important;
+}
 /* Main Content Area */
 .main-content {
-  margin-left: 80px;
-  padding: 20px;
-  min-height: 100vh;
-  width: calc(100% - 80px);
-  box-sizing: border-box;
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  /* background-color: #f8f9fa; */
+  padding: 40px;
+  min-height: 100vh;
+  background-color: transparent; /* ✅ Remove gray background */
 }
 
 /* Form Styling */
 .post-container {
-  max-width: 800px;
-  width: 100%;
+  width: 50vw; /* ✅ Half the screen width */
   background: white;
+  padding: 40px;
   border-radius: 15px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-  padding: 30px;
-  margin: 20px;
-  box-sizing: border-box;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05); 
 }
 
 .post-title {
@@ -103,6 +105,11 @@ body {
   font-size: 1.7rem;
   font-weight: 600;
   text-align: center;
+}
+
+select.input {
+  text-align: center;
+  text-align-last: center; /* For modern browsers */
 }
 
 .post-form {
