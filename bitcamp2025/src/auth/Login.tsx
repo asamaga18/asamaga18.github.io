@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Auth.css';
 
 declare global {
   interface Window {
     google: any;
-    handleCredentialResponse: (response: any) => void;
+    handleCredentialResponse?: (response: any) => void;
   }
 }
 
@@ -29,7 +29,9 @@ const Login = () => {
 
     return () => {
       document.body.removeChild(script);
-      delete window.handleCredentialResponse;
+      if (window.handleCredentialResponse) {
+        delete window.handleCredentialResponse;
+      }
     };
   }, [navigate]);
 
