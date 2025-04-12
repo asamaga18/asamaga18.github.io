@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up with Google</title>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background: #f7f7f7;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    .google-button {
+      margin-top: 10px;
+    }
+
+    .user-info {
+      margin-top: 30px;
+      padding: 15px;
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      display: none;
+    }
+  </style>
+  <script>
+    function handleCredentialResponse(response) {
+      const userData = parseJwt(response.credential);
+      console.log("User signed up:", userData);
+      
+      const userInfoDiv = document.getElementById("user-info");
+      userInfoDiv.style.display = "block";
+      userInfoDiv.innerHTML = `
+        <strong>Signed up as:</strong><br>
+        Name: ${userData.name}<br>
+        Email: ${userData.email}<br>
+        Google ID: ${userData.sub}
+      `;
+      
+      // Here’s where you could POST user data to your backend.
+    }
+
+    function parseJwt(token) {
+      const base64Url = token.split('.')[1];
+      const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+      const jsonPayload = decodeURIComponent(atob(base64).split('').map(c => {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+      }).join(''));
+      return JSON.parse(jsonPayload);
+    }
+  </script>
+</head>
+<body>
+  <h2>Sign Up with Google</h2>
+
+  <!-- Google Identity Button -->
+  <div id="g_id_onload"
+    data-client_id="YOUR_GOOGLE_CLIENT_ID"
+    data-context="signup"
+    data-callback="handleCredentialResponse"
+    data-auto_prompt="false">
+  </div>
+
+  <div class="g_id_signin google-button"
+    data-type="standard"
+    data-shape="rectangular"
+    data-theme="outline"
+    data-text="sign_up_with"
+    data-size="large"
+    data-logo_alignment="left">
+  </div>
+
+  <!-- Show user info after sign-up -->
+  <div id="user-info" class="user-info"></div>
+</body>
+</html>
