@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Sidebar from '../components/Sidebar';
 import { Link } from 'react-router-dom';
 import './Browse.css';
 
@@ -50,6 +51,7 @@ const Browse: React.FC = () => {
 
   return (
     <div className="browse-container">
+      <Sidebar />
       <div className="browse-header">
         <h1>Browse Available Food</h1>
         <div className="search-filters">
