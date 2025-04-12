@@ -26,8 +26,6 @@ const [extra3, setExtra3] = useState(() => {
     const storedLocation = localStorage.getItem('extra3');
     return storedLocation ? JSON.parse(storedLocation) : [];
     });
-const [email, setEmail] = useState(() => localStorage.getItem('email') || '');
-const [password, setPassword] = useState(() => localStorage.getItem('password') || '');
 const [notifications, setNotifications] = useState(() => localStorage.getItem('notifications') || 'all');
 const [language, setLanguage] = useState(() => localStorage.getItem('language') || 'english');
 const [privacy, setPrivacy] = useState(() => localStorage.getItem('privacy') || 'public');
@@ -96,14 +94,6 @@ localStorage.setItem('extra2', JSON.stringify(extra2));
 useEffect(() => {
 localStorage.setItem('extra3', JSON.stringify(extra3));
 }, [extra3]);
-
-useEffect(() => {
-localStorage.setItem('email', email);
-}, [email]);
-
-useEffect(() => {
-localStorage.setItem('password', password);
-}, [password]);
 
 useEffect(() => {
 localStorage.setItem('notifications', notifications);
@@ -177,26 +167,6 @@ return (
     <div className="settings-container">
     <h3>Settings</h3>
     <form>
-        <div className="form-group">
-        <label htmlFor="email">Email:</label>
-        <input
-            type="email"
-            id="email"
-            placeholder="Enter your email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-        />
-        </div>
-        <div className="form-group">
-        <label htmlFor="password">Password:</label>
-        <input
-            type="password"
-            id="password"
-            placeholder="Enter new password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            />
-        </div>
         <div className="form-group">
         <label htmlFor="notifications">Notifications:</label>
         <select
