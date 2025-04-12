@@ -18,16 +18,31 @@ const Home = () => {
     navigate('/login');   // Redirect to login screen
   };
 
+  
+  
+    const goToAccount = () => {
+      navigate('/account');
+    };
+  
+    
+  
+
   return (
     <div className="home-container">
       <nav className="home-nav">
-        <img src="/thetomatotrade/thetomatotradelogo.png" alt="The Tomato Trade Logo" width="50" height="50" />
-        <div className="nav-logo">The Tomato Trade</div>
+        <div className = "nav-left">
+          <img src="/thetomatotrade/thetomatotradelogo.png" alt="The Tomato Trade Logo" width="50" height="50" />
+          <div className="nav-logo">The Tomato Trade</div>
+        </div>
         <div className='nav-links'>
-          <Link to="/account" className = "nav-link">Account</Link>
+          {/* <Link to="/account" className = "nav-link">Account</Link> */}
 
         </div>
-        <button onClick={handleLogout} className="logout-button">Log Out</button>
+        <div className="button-column">
+          <button onClick={goToAccount} className="logout-button">Account</button>
+          <button onClick={handleLogout} className="logout-button">Log Out</button>
+        </div>
+        
       </nav>
 
       <main className="home-content">
