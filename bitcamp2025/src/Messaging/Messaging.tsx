@@ -1,5 +1,11 @@
-import React from "react";
-import { useState, useEffect, useRef } from "react";
-import Select from 'react-select';
 import './Messaging.css';
-import './Messaging';
+
+const Messaging = () => {
+  return (
+    <div className="messaging-container">
+      {/* Add your messaging component content here */}
+    </div>
+  );
+};
+
+export default Messaging;

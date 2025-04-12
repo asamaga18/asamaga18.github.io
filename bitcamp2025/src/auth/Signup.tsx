@@ -1,17 +1,11 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Auth.css';
-
-interface UserData {
-  name: string;
-  email: string;
-  sub: string;
-}
 
 declare global {
   interface Window {
     google: any;
-    handleCredentialResponse: (response: any) => void;
+    handleCredentialResponse?: (response: any) => void;
   }
 }
 
@@ -37,7 +31,9 @@ const Signup = () => {
 
     return () => {
       document.body.removeChild(script);
-      delete window.handleCredentialResponse;
+      if (window.handleCredentialResponse) {
+        delete window.handleCredentialResponse;
+      }
     };
   }, [navigate]);
 
