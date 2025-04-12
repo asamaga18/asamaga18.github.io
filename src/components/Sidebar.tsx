@@ -26,9 +26,9 @@ const Sidebar = () => {
           <span>Messages</span>
         </Link>
         
-        <Link to="/profile" className={`menu-item ${location.pathname === '/profile' ? 'active' : ''}`}>
+        <Link to="/account" className={`menu-item ${location.pathname === '/account' ? 'active' : ''}`}>
           <i className="fas fa-user"></i>
-          <span>Profile</span>
+          <span>Account</span>
         </Link>
       </nav>
     </div>
