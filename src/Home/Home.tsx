@@ -33,14 +33,17 @@ const Home = () => {
         
         <section className="quick-actions">
           <Link to="/browse" className="action-card">
+            <i className="fas fa-search action-icon"></i> {/* 🔍 icon */}
             <h3>Browse Produce</h3>
             <p>Find available produce near you</p>
           </Link>
           <Link to="/post" className="action-card">
+            <i className="fas fa-seedling action-icon"></i> {/* 🌱 icon */}
             <h3>Share Produce</h3>
             <p>Post items you want to share</p>
           </Link>
           <Link to="/messages" className="action-card">
+            <i className="fas fa-comments action-icon"></i> {/* 💬 icon */}
             <h3>Messages</h3>
             <p>Connect with other users</p>
           </Link>

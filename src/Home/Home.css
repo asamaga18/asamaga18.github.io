@@ -62,8 +62,12 @@
   background-color: #713237;  /* light background color */
   display: inline-block;      /* so the box wraps around just the text */
   font-weight: bold;
-  
-  
+}
+
+.action-icon {
+  font-size: 2rem;
+  color: #713237;
+  margin-bottom: 10px;
 }
 
 .hero-section h1 {
