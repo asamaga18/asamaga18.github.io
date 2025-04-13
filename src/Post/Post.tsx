@@ -6,14 +6,13 @@ import Sidebar from '../components/Sidebar';
 import './Post.css';
 
 interface PostFormData {
-  postType: string;
-  itemName: string;
-  category: string;
-  quantity: string;
-  location: string;
-  price: string;
-  description: string;
-  image: File | null;
+  itemName: string;
+  category: string;
+  quantity: string;
+  location: string;
+  price: string;
+  description: string;
+  image: File | null;
 }
 
 const types = [
@@ -22,18 +21,17 @@ const types = [
 ];
 
 const Post = () => {
-  const navigate = useNavigate();
-  const [formData, setFormData] = useState<PostFormData>({
-    postType: '',
-    itemName: '',
-    category: '',
-    quantity: '',
-    location: '',
-    price: '',
-    description: '',
-    image: null
-  });
-  const [imagePreview, setImagePreview] = useState<string>('');
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState<PostFormData>({
+    itemName: '',
+    category: '',
+    quantity: '',
+    location: '',
+    price: '',
+    description: '',
+    image: null
+  });
+  const [imagePreview, setImagePreview] = useState<string>('');
 
   const handleInputChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -66,25 +64,24 @@ const Post = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
-    const postData = {
-      post_type: formData.postType,
-      item_name: formData.itemName,
-      category: formData.category,
-      quantity: formData.quantity,
-      location: formData.location,
-      price: formData.price,
-      description: formData.description,
-      image_url: imagePreview || ''
-    };
+    const postData = {
+      item_name: formData.itemName,
+      category: formData.category,
+      quantity: formData.quantity,
+      location: formData.location,
+      price: formData.price,
+      description: formData.description,
+      image_url: imagePreview || ''
+    };
 
-    try {
-      const res = await fetch(`${import.meta.env.VITE_API_BASE}/posts`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(postData)
-      });
+    try {
+      const res = await fetch(`${import.meta.env.VITE_API_BASE}/posts`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(postData)
+      });
 
       if (!res.ok) {
         const errorText = await res.text();
@@ -93,12 +90,12 @@ const Post = () => {
         return;
       }
 
-      navigate('/browse');
-    } catch (err) {
-      console.error(err);
-      alert('Error posting item.');
-    }
-  };
+      navigate('/browse');
+    } catch (err) {
+      console.error(err);
+      alert('Error posting item.');
+    }
+  };
 
   return (
     <div className="page-container">
