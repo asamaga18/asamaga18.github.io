@@ -4,17 +4,17 @@
   background-color: #f8f9fa;
  }
  
- 
  .chat-container {
   width: calc(100% - 80px);
   margin-left: 80px;
-  background-color: #f8f9fa;
+  background-color: #faefdb;
   box-sizing: border-box;
   padding: 20px;
   overflow-y: auto;
- }
- 
- 
+  height: 55rem;
+  border: black solid 0.05rem;
+}
+
  .chat-main {
   display: flex;
   flex-direction: column;
@@ -24,8 +24,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin: 20px;
  }
- 
- 
+
  .chat-header {
   padding: 1rem;
   background-color: #713237;
@@ -35,15 +34,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border: black solid 0.2rem;
  }
- 
- 
+
  .chat-header h2 {
   margin: 0;
   font-size: 1.5rem;
  }
- 
- 
+
  .new-chat-btn {
   background-color: white;
   color: #713237;
@@ -54,14 +52,11 @@
   cursor: pointer;
   transition: background-color 0.2s;
  }
- 
- 
+
  .new-chat-btn:hover {
   background-color: #f0f0f0;
  }
  
- 
- /* Location and Contacts Section */
  .location-contacts-section {
   margin: 20px 0;
   padding: 20px;
@@ -69,7 +64,6 @@
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
  }
- 
  
  .location-header {
   color: #713237;
@@ -80,16 +74,12 @@
   border-bottom: 2px solid #f0f0f0;
  }
  
- 
  .contacts-list {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* force 2 per row */
   gap: 20px;
  };
- 
- 
- 
- 
+
  .contact-card {
   background-color: #fff0eb !important; /* soft peach tint */
   border: 1px solid #ddd;
@@ -98,19 +88,11 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   transition: transform 0.2s, box-shadow 0.2s;
  }
- 
- 
- 
- 
- 
- 
- 
- 
+
  .contact-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
  }
- 
  
  .contact-name {
   font-size: 1.1rem;
@@ -119,18 +101,15 @@
   margin-bottom: 10px;
  }
  
- 
  .contact-details {
   font-size: 0.9rem;
   color: #333;
   margin-bottom: 15px;
  }
  
- 
  .contact-details div {
   margin-bottom: 5px;
  }
- 
  
  .contact-message-btn {
   background-color: #713237;
@@ -143,12 +122,9 @@
   transition: background-color 0.2s;
  }
  
- 
  .contact-message-btn:hover {
   background-color: #8B4513;
  }
- 
- 
  .messages-container {
   flex: 1;
   padding: 1rem;
@@ -156,44 +132,42 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  background-color: #f8f9fa;
+  background-color: #F9F6F1;
   margin-bottom: 20px;
-  min-height: 400px;
-  max-height: 600px;
-  border-radius: 8px;
- }
- 
- 
- .message {
+  min-height: 600px;
+  max-height: 800px;
+  /* border-radius: 8px; */
+  border: black solid 0.01rem;
+}
+
+
+.message {
   max-width: 70%;
   padding: 0.75rem 1rem;
   border-radius: 1rem;
   position: relative;
   word-wrap: break-word;
- }
- 
- 
- .message.received {
+}
+
+.message.received {
   align-self: flex-start;
   background-color: white;
   border: 1px solid #e2e8f0;
   border-bottom-left-radius: 0.25rem;
- }
- 
- 
- .message.sent {
+}
+
+.message.sent {
   align-self: flex-end;
   background-color: #713237;
   color: white;
   border-bottom-right-radius: 0.25rem;
- }
- 
- 
+  align-items: flex-end;
+}
+
  .message-content {
   display: flex;
   flex-direction: column;
  }
- 
  
  .message-sender {
   font-weight: 600;
@@ -201,11 +175,9 @@
   margin-bottom: 5px;
  }
  
- 
  .message-text {
   font-size: 1rem;
  }
- 
  
  .message-timestamp {
   font-size: 0.75rem;
@@ -214,7 +186,6 @@
   align-self: flex-end;
  }
  
- 
  .message-form {
   display: flex;
   gap: 10px;
@@ -222,34 +193,36 @@
   padding: 15px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
- }
- 
- 
- .message-input {
+  align-items: center;
+  flex-direction: row;
+  height: 2.5rem;
+}
+
+.message-input {
   flex: 1;
   padding: 10px 15px;
   border: 1px solid #e2e8f0;
   border-radius: 8px;
   font-size: 1rem;
- }
+  height: 1.5rem;
+  margin-bottom: 1rem;
+}
  
- 
- .message-input:focus {
+.message-input:focus {
   outline: none;
   border-color: #713237;
- }
- 
- 
- .send-button {
-  padding: 10px 20px;
+}
+
+.send-button {
+  padding: 10px 15px;
   background-color: #713237;
   color: white;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.2s;
- }
- 
+  height: 2.5rem;
+}
  
  .send-button:hover {
   background-color: #8B4513;
