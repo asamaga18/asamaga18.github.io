@@ -91,45 +91,45 @@ const Browse: React.FC = () => {
     );
   }
 
-  return (
-    <div className="browse-container">
-      <Sidebar />
-      <div className="browse-header">
-        <div className="browse-nav">
-          <h1>Browse Available Food</h1>
-        </div>
-        <div className="search-filters">
-          <input
-            type="text"
-            placeholder="Search food items..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="search-input"
-          />
-          <div className="category-filters">
-            <Select
-              className="label-dropdown1"
-              isMulti
-              options={categories.map(category => ({
-                value: category,
-                label: category.charAt(0).toUpperCase() + category.slice(1)
-              }))}
-              placeholder="Post Type"
-              onChange={handleCategoryChange}
-            />
-            <Select
-              className="label-dropdown2"
-              isMulti
-              options={foods.map(food => ({
-                value: food,
-                label: food.charAt(0).toUpperCase() + food.slice(1)
-              }))}
-              placeholder="Food Type"
-              onChange={handleCategoryChange}
-            />
-          </div>
-        </div>
-      </div>
+  return (
+    <div className="browse-container">
+      <Sidebar />
+     <div className="browse-header">
+        <div className="browse-nav">
+          <h1>Browse Available Food</h1>
+        </div>
+        <div className="search-filters">
+          <input
+            type="text"
+            placeholder="Search food items..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="search-input"
+          />
+         <div className="category-filters">
+            <Select
+              className="label-dropdown1"
+              isMulti
+              options={categories.map(category => ({
+                value: category,
+                label: category.charAt(0).toUpperCase() + category.slice(1)
+              }))}
+              placeholder="Post Type"
+              onChange={handleCategoryChange}
+            />
+            <Select
+              className="label-dropdown2"
+              isMulti
+              options={foods.map(food => ({
+                value: food,
+                label: food.charAt(0).toUpperCase() + food.slice(1)
+              }))}
+              placeholder="Food Type"
+              onChange={handleCategoryChange}
+            />
+          </div>
+        </div>
+      </div>
 
       <div className="food-grid">
         {filteredItems.length === 0 ? (
