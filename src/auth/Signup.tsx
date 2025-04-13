@@ -15,14 +15,9 @@ const Signup = () => {
   const sendToBackend = async (credential: string) => {
     try {
       console.log("Sending credential to backend...");
-      const response = await fetch('http://localhost:8000/auth/google-auth', {
+      const response = await fetch('https://www.thetomatotrade.tech/auth/google-auth', {
         method: 'POST',
-        headers: { 
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-          'Access-Control-Allow-Origin': '*'
-        },
-        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ token: credential })
       });
 
@@ -47,9 +42,7 @@ const Signup = () => {
       navigate('/home');
     } catch (error) {
       console.error('Signup error:', error);
-      // Store basic info and continue to home page
-      localStorage.setItem('firstName', 'User');
-      navigate('/home');
+      alert('Failed to sign up. Please try again.');
     }
   };
 

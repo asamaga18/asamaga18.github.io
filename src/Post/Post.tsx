@@ -14,7 +14,6 @@ interface PostFormData {
   price: string;
   description: string;
   image: File | null;
-  requestType: string;
 }
 
 const types = [
@@ -32,8 +31,7 @@ const Post = () => {
     location: '',
     price: '',
     description: '',
-    image: null,
-    requestType: ''
+    image: null
   });
   const [imagePreview, setImagePreview] = useState<string>('');
 
@@ -76,13 +74,10 @@ const Post = () => {
       location: formData.location,
       price: formData.price,
       description: formData.description,
-      image_url: imagePreview || '',
-      created_at: new Date().toISOString(),
-      request_type: formData.requestType
+      image_url: imagePreview || ''
     };
 
     try {
-      console.log('Submitting post:', postData);
       const res = await fetch(`${import.meta.env.VITE_API_BASE}/posts`, {
         method: 'POST',
         headers: {
@@ -98,11 +93,9 @@ const Post = () => {
         return;
       }
 
-      const result = await res.json();
-      console.log('Post created successfully:', result);
       navigate('/browse');
     } catch (err) {
-      console.error('Error posting item:', err);
+      console.error(err);
       alert('Error posting item.');
     }
   };
@@ -140,12 +133,12 @@ const Post = () => {
             </div>
 
             <div className="form-group">
-              <label htmlFor="requestType">Do you have a request or anything to sell?</label>
+              <label htmlFor="Request">Do you have a request or anything to sell?</label>
               <select
-                id="requestType"
-                name="requestType"
+                id="request"
+                name="request"
                 className="input"
-                value={formData.requestType}
+                value={formData.location}
                 onChange={handleInputChange}
                 required
               >

@@ -6,28 +6,26 @@
 
 .browse-container {
   max-width: 75rem;
-  min-height: 100vh;
+  height: 100vh;
   margin: 0 auto;
   padding: 2rem;
   background-color: #F9F6F1;
   border: black solid 0.05rem;
   border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  width: 80vw;
-  box-sizing: border-box;
-  margin-bottom: 2rem;
+
+  /* display: flex;
+  justify-content: center;
+  align-items: flex-start; */
 }
 
 body {
   background-image: url('/backgroundimage.png');
+ 
   margin: 0;
   padding: 0;
   width: 100vw;
   min-height: 100vh;
   font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-  display: flex;
-  justify-content: center;
 }
 
 .browse-nav {
@@ -160,6 +158,15 @@ body {
 .filter-chip.selected {
   background-color: #8B4513;
   color: white;
+}
+
+.browse-container {
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+  min-height: 100vh;
+  padding-left: 2rem;
+  box-sizing: border-box;
 }
 
 .browse-header {

@@ -7,7 +7,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const storedName = localStorage.getItem('user_first_name');
+    const storedName = localStorage.getItem('firstName');
     if (storedName) {
       setFirstName(storedName);
     }
@@ -47,7 +47,7 @@ const Home = () => {
 
       <main className="home-content">
         <section className="hero-section">
-          <h1>{firstName ? `Welcome, ${firstName},` : 'Welcome'} to The Tomato Trade</h1>
+          <h1>Welcome{firstName ? `, ${firstName}` : ' to The Tomato Trade'}</h1>
           <p>Share and discover fresh produce in your community</p>
         </section>
 
