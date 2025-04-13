@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import Sidebar from '../components/Sidebar';
 import Select from 'react-select';
@@ -6,7 +5,7 @@ import { Link } from 'react-router-dom';
 import './Browse.css';
 
 interface FoodItem {
- _id?: string;
+  _id?: string;
   item_name: string;
   category: string;
   location: string;
@@ -14,6 +13,7 @@ interface FoodItem {
   price: string;
   description: string;
   image_url?: string;
+  created_at: string;
 }
 
 const Browse: React.FC = () => {
@@ -26,11 +26,14 @@ const Browse: React.FC = () => {
       try {
         const res = await fetch(`${import.meta.env.VITE_API_BASE}/posts`);
         const data = await res.json();
-        setFoodItems(data);
+        const sortedData = data.sort((a: FoodItem, b: FoodItem) => 
+          new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+        );
+        setFoodItems(sortedData);
       } catch (err) {
         console.error("Error fetching posts:", err);
       }
-     };
+    };
 
     fetchPosts();
   }, []);

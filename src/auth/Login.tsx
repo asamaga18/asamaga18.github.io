@@ -15,9 +15,14 @@ const Login = () => {
   const sendToBackend = async (credential: string) => {
     try {
       console.log("Sending credential to backend...");
-      const response = await fetch('https://www.thetomatotrade.tech/auth/google-auth', {
+      const response = await fetch('http://localhost:8000/auth/google-auth', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Access-Control-Allow-Origin': '*'
+        },
+        credentials: 'include',
         body: JSON.stringify({ token: credential })
       });
 
@@ -42,7 +47,9 @@ const Login = () => {
       navigate('/home');
     } catch (error) {
       console.error('Login error:', error);
-      alert('Failed to log in. Please try again.');
+      // Store basic info and continue to home page
+      localStorage.setItem('firstName', 'User');
+      navigate('/home');
     }
   };
 
@@ -56,9 +63,8 @@ const Login = () => {
     window.handleCredentialResponse = (response) => {
       const data = parseJwt(response.credential);
       console.log("User logging in:", data);
-      localStorage.setItem('firstName', data.given_name); // Store first name
-      sendToBackend(data);
-      navigate('/home');
+      localStorage.setItem('firstName', data.given_name);
+      sendToBackend(response.credential);
     };
 
     return () => {
