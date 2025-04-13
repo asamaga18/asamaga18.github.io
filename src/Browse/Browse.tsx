@@ -6,14 +6,14 @@ import { Link } from 'react-router-dom';
 import './Browse.css';
 
 interface FoodItem {
-  _id?: string;
-  item_name: string;
-  category: string;
-  location: string;
-  quantity: string;
-  price: string;
-  description: string;
-  image_url?: string;
+ _id?: string;
+  item_name: string;
+  category: string;
+  location: string;
+  quantity: string;
+  price: string;
+  description: string;
+  image_url?: string;
 }
 
 const Browse: React.FC = () => {
@@ -23,49 +23,49 @@ const Browse: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
         setLoading(true);
         setError(null);
         console.log('Fetching from:', `${import.meta.env.VITE_API_BASE}/posts`);
         
-        const res = await fetch(`${import.meta.env.VITE_API_BASE}/posts`);
+      const res = await fetch(`${import.meta.env.VITE_API_BASE}/posts`);
         console.log('Response status:', res.status);
         
         if (!res.ok) {
           throw new Error(`HTTP error! status: ${res.status}`);
         }
         
-        const data = await res.json();
+       const data = await res.json();
         console.log('Received data:', data);
-        setFoodItems(data);
-      } catch (err) {
-        console.error("Error fetching posts:", err);
+       setFoodItems(data);
+      } catch (err) {
+        console.error("Error fetching posts:", err);
         setError(err instanceof Error ? err.message : 'Failed to fetch posts');
       } finally {
         setLoading(false);
-      }
-    };
+      }
+     };
 
-    fetchPosts();
-  }, []);
+    fetchPosts();
+  }, []);
 
-  const handleCategoryChange = (selectedOptions: any) => {
-    setSelectedCategory(selectedOptions.map((option: any) => option.value));
-  };
+  const handleCategoryChange = (selectedOptions: any) => {
+     setSelectedCategory(selectedOptions.map((option: any) => option.value));
+  };
 
-  const foods = ['all', 'vegetables', 'fruits', 'canned', 'dairy', 'grains', 'requests', 'sales'];
-  const categories = ['all', 'requests', 'sales'];
+  const foods = ['all', 'vegetables', 'fruits', 'canned', 'dairy', 'grains', 'requests', 'sales'];
+  const categories = ['all', 'requests', 'sales'];
 
-  const filteredItems = foodItems.filter(item => {
-    const matchesSearch =
-      item.item_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      item.description.toLowerCase().includes(searchTerm.toLowerCase());
+  const filteredItems = foodItems.filter(item => {
+    const matchesSearch =
+      item.item_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      item.description.toLowerCase().includes(searchTerm.toLowerCase());
 
-    const matchesCategory =
-      selectedCategory.includes('all') ||
-      selectedCategory.includes(item.category?.toLowerCase());
+    const matchesCategory =
+      selectedCategory.includes('all') ||
+   selectedCategory.includes(item.category?.toLowerCase());
 
     return matchesSearch && matchesCategory;
   });
