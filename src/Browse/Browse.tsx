@@ -18,7 +18,7 @@ interface FoodItem {
 
 const Browse: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState<string[]>(['all']);
+  const [selectedCategory, setSelectedCategory] = useState('all');
   const [foodItems, setFoodItems] = useState<FoodItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
