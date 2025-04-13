@@ -54,8 +54,11 @@ const Login = () => {
     document.body.appendChild(script);
 
     window.handleCredentialResponse = (response) => {
-      console.log("Received Google response");
-      sendToBackend(response.credential);
+      const data = parseJwt(response.credential);
+      console.log("User logging in:", data);
+      localStorage.setItem('firstName', data.given_name); // Store first name
+      sendToBackend(data);
+      navigate('/home');
     };
 
     return () => {
@@ -63,6 +66,15 @@ const Login = () => {
       delete window.handleCredentialResponse;
     };
   }, [navigate]);
+
+  const parseJwt = (token: string) => {
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = decodeURIComponent(atob(base64).split('').map(c =>
+      '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
+    ).join(''));
+    return JSON.parse(jsonPayload);
+  };
 
   return (
     <div className="auth-container">

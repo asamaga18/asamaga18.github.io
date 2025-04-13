@@ -6,12 +6,6 @@ import UserSearch from './UserSearch';
 import Chat from './Chat';
 import './Messaging.css';
 
-interface ChatProps {
-  messages: Message[];
-  onSendMessage: (content: string) => Promise<void>;
-  loading: boolean;
-}
-
 const Messaging = () => {
   const navigate = useNavigate();
   const [conversations, setConversations] = useState<ChatConversation[]>([]);
