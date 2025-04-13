@@ -87,12 +87,10 @@
   padding: 4rem 0;
   border: 2px solid #ffffff;
   padding: 12px 20px;
-  padding-bottom: 2rem;
   border-radius: 8px;
   background-color: #713237;
   display: inline-block;
   font-weight: bold;
-  border: black solid 0.2rem;
 }
 
 .action-icon {
@@ -115,8 +113,6 @@
 .hero-section p {
   font-size: 1.2rem;
   color: #ffffff;
-  margin-left: 2rem;
-  margin-right: 2rem;
 }
 
 .quick-actions {
@@ -128,11 +124,9 @@
 }
 
 .action-card {
-  margin-top: 2rem;
   background-color: white;
   padding: 2rem;
   border-radius: 10px;
-  border: black solid 0.05rem;
   text-decoration: none;
   color: inherit;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);

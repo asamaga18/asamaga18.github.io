@@ -2,7 +2,7 @@ import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Login from './auth/Login';
 import Signup from './auth/Signup';
 import Post from './Post/Post';
-import Messaging from './Messaging/Messaging';
+import Chat from './Messaging/Chat';
 import Home from './Home/Home';
 import Browse from './Browse/Browse';
 import Account from './Account/Account';
@@ -31,7 +31,7 @@ const App = () => {
         <Route path="/home" element={<Home />} />
         <Route path="/browse" element={<Browse />} />
         <Route path="/post" element={<Post />} />
-        <Route path="/messages" element={<Messaging />} />
+        <Route path="/messages" element={<Chat />} />
         <Route path="/account" element={<Account />} />
       </Routes>
     </Router>

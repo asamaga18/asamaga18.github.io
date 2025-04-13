@@ -12,10 +12,10 @@
   background-color: #F9F6F1;
   border: black solid 0.05rem;
   border-radius: 8px;
-  align-items: left;
-  display: flex;
-  /* justify-content: center; */
-  /* align-items: flex-start; */
+
+  /* display: flex;
+  justify-content: center;
+  align-items: flex-start; */
 }
 
 body {
@@ -31,12 +31,11 @@ body {
 .browse-nav {
   display: flex;
   justify-content: space-between;
-  align-items: left;
+  align-items: center;
   width: 95%;
-  padding: 1rem 2rem 2rem;
+  padding: 1rem 2rem;
   background-color: #713237;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -167,21 +166,19 @@ body {
   flex-direction: column;
   width: 80vw;
   min-height: 100vh;
-  padding: 2rem;
+  padding-left: 80px; /* if sidebar is 80px wide */
   box-sizing: border-box;
-  
 }
+
 
 .browse-header {
   margin-bottom: 2rem;
-  width: 99%;
 }
 
 .browse-header h1 {
   font-size: 2.5rem;
   color: #F9F6F1;
   margin-bottom: 1.5rem;
-  padding: 0;
 }
 
 .search-filters {
@@ -191,11 +188,11 @@ body {
 }
 
 .search-input {
-  /* padding: 0.8rem 1rem; */
+  padding: 0.8rem 1rem;
   border: 2px solid #e0e0e0;
   border-radius: 8px;
   font-size: 1rem;
-  width: 98%;
+  width: 97%;
   transition: border-color 0.3s ease;
 }
 
