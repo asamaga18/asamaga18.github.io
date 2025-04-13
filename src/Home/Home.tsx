@@ -64,7 +64,7 @@ const Home = () => {
           </Link>
           <Link to="/messages" className="action-card">
             <i className="fas fa-comments action-icon"></i>
-            <h3>Messages</h3>
+            <h3>View Your Neighborhood</h3>
             <p>Connect with other users</p>
           </Link>
         </section>
