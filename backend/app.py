@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
-from flask_cors import CORS
+from flask_cors import CORS 
 from models import User, Session, Base, engine
-from chat_routes import chat_bp
+from chat_routes import chat_bps
 import logging
 
 # Configure logging
