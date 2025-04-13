@@ -16,16 +16,16 @@ const Account = () => {
         const stored = localStorage.getItem('produce');
         return stored ? JSON.parse(stored) : [];
     });
-    const [extra1, setExtra1] = useState(() => {
-        const stored = localStorage.getItem('extra1');
+    const [season, setSeason] = useState(() => {
+        const stored = localStorage.getItem('season');
         return stored ? JSON.parse(stored) : [];
     });
-    const [extra2, setExtra2] = useState(() => {
-        const stored = localStorage.getItem('extra2');
+    const [negotiation, setNegotiation] = useState(() => {
+        const stored = localStorage.getItem('negotiation');
         return stored ? JSON.parse(stored) : [];
     });
-    const [extra3, setExtra3] = useState(() => {
-        const stored = localStorage.getItem('extra3');
+    const [travel, setTravel] = useState(() => {
+        const stored = localStorage.getItem('travel');
         return stored ? JSON.parse(stored) : [];
     });
     const [notifications, setNotifications] = useState(() => localStorage.getItem('notifications') || 'all');
@@ -61,20 +61,30 @@ const Account = () => {
         { value: 'Pumpkin', label: 'Pumpkin' }
     ];
 
-    const extras = [
-        { value: 'idk1', label: 'idk1' },
-        { value: 'idk2', label: 'idk2' },
-        { value: 'idk3', label: 'idk3' },
-        { value: 'idk4', label: 'idk4' },
-        { value: 'idk5', label: 'idk5' },
-        { value: 'idk6', label: 'idk6' }
+    const seasons = [
+        { value: 'spring', label: 'spring' },
+        { value: 'summer', label: 'summer' },
+        { value: 'fall', label: 'fall' },
+        { value: 'winter', label: 'winter' }
+    ];
+    
+    const negotiations = [
+        { value: 'yes', label: 'yes' },
+        { value: 'no', label: 'no' },
+        { value: 'sometimes', label: 'sometimes' }
+    ];
+
+    const travels = [
+        { value: 'yes', label: 'yes' },
+        { value: 'no', label: 'no' },
+        { value: 'sometimes', label: 'sometimes' }
     ];
 
     useEffect(() => localStorage.setItem('location', JSON.stringify(location)), [location]);
     useEffect(() => localStorage.setItem('produce', JSON.stringify(produce)), [produce]);
-    useEffect(() => localStorage.setItem('extra1', JSON.stringify(extra1)), [extra1]);
-    useEffect(() => localStorage.setItem('extra2', JSON.stringify(extra2)), [extra2]);
-    useEffect(() => localStorage.setItem('extra3', JSON.stringify(extra3)), [extra3]);
+    useEffect(() => localStorage.setItem('season', JSON.stringify(season)), [season]);
+    useEffect(() => localStorage.setItem('negotiation', JSON.stringify(negotiation)), [negotiation]);
+    useEffect(() => localStorage.setItem('travel', JSON.stringify(travel)), [travel]);
     useEffect(() => localStorage.setItem('notifications', notifications), [notifications]);
     useEffect(() => localStorage.setItem('language', language), [language]);
     useEffect(() => localStorage.setItem('privacy', privacy), [privacy]);
@@ -87,24 +97,24 @@ const Account = () => {
                 <div className="section1">
                     <form>
                         <div className="form-group">
-                            <label htmlFor="location">Location:</label>
+                            <label id="labelName" htmlFor="location">Location:</label>
                             <Select id="location" isMulti options={locations} value={location} onChange={setLocation} />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="produce">Produce:</label>
+                            <label id="labelName" htmlFor="produce">Produce:</label>
                             <Select id="produce" isMulti options={produces} value={produce} onChange={setProduce} />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="extra1">Extra 1:</label>
-                            <Select id="extra1" isMulti options={extras} value={extra1} onChange={setExtra1} />
+                            <label id="labelName" htmlFor="season">Seasons:</label>
+                            <Select id="season" isMulti options={seasons} value={season} onChange={setSeason} />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="extra2">Extra 2:</label>
-                            <Select id="extra2" isMulti options={extras} value={extra2} onChange={setExtra2} />
+                            <label id="labelName" htmlFor="negotiation">Will Negotiate Pricing:</label>
+                            <Select id="negotiation" isMulti options={negotiations} value={negotiation} onChange={setNegotiation} />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="extra3">Extra 3:</label>
-                            <Select id="extra3" isMulti options={extras} value={extra3} onChange={setExtra3} />
+                            <label id="labelName" htmlFor="travel">Will Travel to Secure Sale:</label>
+                            <Select id="travel" isMulti options={travels} value={travel} onChange={setTravel} />
                         </div>
                     </form>
                 </div>
@@ -117,7 +127,7 @@ const Account = () => {
                     </div>
                     <form>
                         <div className="form-group">
-                            <label htmlFor="notifications">Notifications:</label>
+                            <label id="labelName" htmlFor="notifications">Notifications:</label>
                             <select id="notifications" value={notifications} onChange={(e) => setNotifications(e.target.value)}>
                                 <option value="all">All Notifications</option>
                                 <option value="email">Email Only</option>
@@ -125,7 +135,7 @@ const Account = () => {
                             </select>
                         </div>
                         <div className="form-group">
-                            <label htmlFor="language">Language:</label>
+                            <label id="labelName" htmlFor="language">Language:</label>
                             <select id="language" value={language} onChange={(e) => setLanguage(e.target.value)}>
                                 <option value="english">English</option>
                                 <option value="spanish">Spanish</option>
@@ -135,7 +145,7 @@ const Account = () => {
                             </select>
                         </div>
                         <div className="form-group">
-                            <label htmlFor="privacy">Privacy Settings:</label>
+                            <label id="labelName" htmlFor="privacy">Privacy Settings:</label>
                             <select id="privacy" value={privacy} onChange={(e) => setPrivacy(e.target.value)}>
                                 <option value="public">Public</option>
                                 <option value="private">Private</option>

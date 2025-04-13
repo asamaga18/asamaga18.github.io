@@ -40,7 +40,7 @@ body {
   top: 0;
   z-index: 100;
   color: #F9F6F1;
-
+  border: black solid 0.2rem;
 }
 
 .sidebar {
@@ -95,7 +95,6 @@ body {
   font-size: 1.5rem;
   margin-bottom: 0.25rem;
 }
-
 
 .main-content {
   flex: 1;
@@ -166,13 +165,13 @@ body {
   flex-direction: column;
   width: 80vw;
   min-height: 100vh;
-  padding-left: 80px; /* if sidebar is 80px wide */
+  padding-left: 2rem;
   box-sizing: border-box;
 }
 
-
 .browse-header {
   margin-bottom: 2rem;
+  width: 99%;
 }
 
 .browse-header h1 {
@@ -293,7 +292,6 @@ body {
   background-color: #713237;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .browse-container {
     padding: 1rem;

@@ -25,6 +25,7 @@
     font-size: 48px;
     font-weight: bold;
     margin-bottom: 20px;
+    border: black solid 0.2rem;
 }
     
 .section1, .section2 {
@@ -66,14 +67,15 @@ h1, h3 {
     font-weight: bold;
     margin-bottom: 20px;
     margin-right: 0;
+    border: black solid 0.05rem;
 }
 
 h3 {
-    color: #713237;
+    color: #6c6364;
     font-size: 2rem;
 }
 
-#location, #produce, #extra1, #extra2, #extra3, #notifications, #language, #privacy {
+#location, #produce, #season, #negotiation, #travel, #notifications, #language, #privacy {
     color: black;
     margin-top: 0;
     text-align: left;
