@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ChatService } from './chatService';
 import { ChatConversation, Message } from './types';
 import UserSearch from './UserSearch';
@@ -12,6 +13,7 @@ interface ChatProps {
 }
 
 const Messaging = () => {
+  const navigate = useNavigate();
   const [conversations, setConversations] = useState<ChatConversation[]>([]);
   const [selectedChat, setSelectedChat] = useState<string | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
@@ -93,45 +95,52 @@ const Messaging = () => {
 
   return (
     <div className="messaging-container">
-      <div className="messaging-sidebar">
-        <UserSearch onChatCreated={handleNewChat} />
-        <div className="conversations-list">
-          {conversations.map(chat => (
-            <div
-              key={chat.id}
-              className={`conversation-item ${selectedChat === chat.id ? 'selected' : ''}`}
-              onClick={() => setSelectedChat(chat.id)}
-            >
-              <div className="conversation-avatar">
-                {chat.participants[0].profile_picture ? (
-                  <img src={chat.participants[0].profile_picture} alt="Profile" />
-                ) : (
-                  <div className="avatar-placeholder">
-                    {chat.participants[0].first_name[0]}
-                  </div>
-                )}
-              </div>
-              <div className="conversation-info">
-                <h3>{chat.name}</h3>
-                {/* Add last message preview here if needed */}
-              </div>
-            </div>
-          ))}
-        </div>
+      <div className="messaging-header">
+        <button className="back-button" onClick={() => navigate('/home')}>
+          ← Back to Home
+        </button>
       </div>
-      
-      <div className="chat-window">
-        {selectedChat ? (
-          <Chat
-            messages={messages}
-            onSendMessage={handleSendMessage}
-            loading={loading}
-          />
-        ) : (
-          <div className="no-chat-selected">
-            <h2>Select a conversation or start a new one</h2>
+      <div className="messaging-content">
+        <div className="messaging-sidebar">
+          <UserSearch onChatCreated={handleNewChat} />
+          <div className="conversations-list">
+            {conversations.map(chat => (
+              <div
+                key={chat.id}
+                className={`conversation-item ${selectedChat === chat.id ? 'selected' : ''}`}
+                onClick={() => setSelectedChat(chat.id)}
+              >
+                <div className="conversation-avatar">
+                  {chat.participants[0].profile_picture ? (
+                    <img src={chat.participants[0].profile_picture} alt="Profile" />
+                  ) : (
+                    <div className="avatar-placeholder">
+                      {chat.participants[0].first_name[0]}
+                    </div>
+                  )}
+                </div>
+                <div className="conversation-info">
+                  <h3>{chat.name}</h3>
+                  {/* Add last message preview here if needed */}
+                </div>
+              </div>
+            ))}
           </div>
-        )}
+        </div>
+        
+        <div className="chat-window">
+          {selectedChat ? (
+            <Chat
+              messages={messages}
+              onSendMessage={handleSendMessage}
+              loading={loading}
+            />
+          ) : (
+            <div className="no-chat-selected">
+              <h2>Select a conversation or start a new one</h2>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

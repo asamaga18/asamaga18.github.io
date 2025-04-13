@@ -1,11 +1,39 @@
 .messaging-container {
   display: flex;
+  flex-direction: column;
   height: calc(100vh - 64px);
   width: 100%;
   background-color: #f5f7fb;
-  padding: 20px;
-  box-sizing: border-box;
-  position: relative;
+}
+
+.messaging-header {
+  padding: 1rem;
+  background-color: white;
+  border-bottom: 1px solid #e1e4e8;
+}
+
+.back-button {
+  padding: 0.5rem 1rem;
+  background: none;
+  border: none;
+  color: #1976d2;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+
+.back-button:hover {
+  color: #1565c0;
+}
+
+.messaging-content {
+  display: flex;
+  flex: 1;
+  padding: 1rem;
+  gap: 1rem;
+  overflow: hidden;
 }
 
 .messaging-sidebar {
@@ -16,7 +44,6 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  margin-right: 20px;
   overflow: hidden;
 }
 
@@ -89,7 +116,7 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  min-width: 0; /* Prevent flex item from overflowing */
+  min-width: 0;
 }
 
 .no-chat-selected {
@@ -100,14 +127,12 @@
   color: #666;
   text-align: center;
   padding: 2rem;
-  background-color: white;
 }
 
 .no-chat-selected h2 {
   font-size: 1.5rem;
   font-weight: 500;
   margin: 0;
-  color: #666;
 }
 
 .loading {
@@ -117,5 +142,4 @@
   height: 100%;
   color: #666;
   font-size: 1rem;
-  background-color: white;
 }

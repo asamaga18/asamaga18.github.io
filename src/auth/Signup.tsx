@@ -12,12 +12,38 @@ declare global {
 const Signup = () => {
   const navigate = useNavigate();
 
-  const sendToBackend = async (data: any) => {
-    await fetch('http://localhost:5000/auth', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    });
+  const sendToBackend = async (credential: string) => {
+    try {
+      console.log("Sending credential to backend...");
+      const response = await fetch('http://localhost:8000/auth/google-auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token: credential })
+      });
+
+      if (!response.ok) {
+        const errorData = await response.text();
+        console.error('Authentication error:', errorData);
+        throw new Error('Authentication failed: ' + errorData);
+      }
+
+      const data = await response.json();
+      console.log("Received response from backend:", data);
+      localStorage.setItem('auth_token', data.access_token);
+      localStorage.setItem('user_id', data.user.id);
+      localStorage.setItem('user_email', data.user.email);
+      localStorage.setItem('user_first_name', data.user.first_name);
+      localStorage.setItem('user_last_name', data.user.last_name);
+      localStorage.setItem('user_full_name', `${data.user.first_name} ${data.user.last_name}`);
+      if (data.user.profile_picture) {
+        localStorage.setItem('user_profile_picture', data.user.profile_picture);
+      }
+      
+      navigate('/home');
+    } catch (error) {
+      console.error('Signup error:', error);
+      alert('Failed to sign up. Please try again.');
+    }
   };
 
   useEffect(() => {
@@ -28,11 +54,8 @@ const Signup = () => {
     document.body.appendChild(script);
 
     window.handleCredentialResponse = (response) => {
-      const data = parseJwt(response.credential);
-      console.log("User signing up:", data);
-      localStorage.setItem('firstName', data.given_name); // Store first name
-      sendToBackend(data);
-      navigate('/home');
+      console.log("Received Google response");
+      sendToBackend(response.credential);
     };
 
     return () => {
@@ -40,15 +63,6 @@ const Signup = () => {
       delete window.handleCredentialResponse;
     };
   }, [navigate]);
-
-  const parseJwt = (token: string) => {
-    const base64Url = token.split('.')[1];
-    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    const jsonPayload = decodeURIComponent(atob(base64).split('').map(c =>
-      '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
-    ).join(''));
-    return JSON.parse(jsonPayload);
-  };
 
   return (
     <div className="auth-container">
