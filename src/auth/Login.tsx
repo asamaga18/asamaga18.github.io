@@ -15,7 +15,7 @@ const Login = () => {
   const sendToBackend = async (credential: string) => {
     try {
       console.log("Sending credential to backend...");
-      const response = await fetch('http://localhost:8000/auth/google-auth', {
+      const response = await fetch('https://www.thetomatotrade.tech/auth/google-auth', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ token: credential })
