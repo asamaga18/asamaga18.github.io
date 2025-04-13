@@ -11,9 +11,13 @@ import os
 
 router = APIRouter()
 
-# Update these with your actual values
-GOOGLE_CLIENT_ID = "339592120472-nlm1adirm0hrm2b4okpb5lqalk4bpnci.apps.googleusercontent.com"
-SECRET_KEY = os.getenv("JWT_SECRET_KEY", "your-secret-key-here")
+# Load configuration from environment variables
+GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID")
+if not GOOGLE_CLIENT_ID:
+    raise ValueError("GOOGLE_CLIENT_ID must be set in environment variables")
+SECRET_KEY = os.getenv("JWT_SECRET_KEY")
+if not SECRET_KEY:
+    raise ValueError("JWT_SECRET_KEY must be set in environment variables")
 ALGORITHM = "HS256"
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token", auto_error=False)
