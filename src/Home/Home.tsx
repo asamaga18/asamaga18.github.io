@@ -59,8 +59,8 @@ const Home = () => {
           </Link>
           <Link to="/post" className="action-card">
             <i className="fas fa-seedling action-icon"></i>
-            <h3>Share Produce</h3>
-            <p>Post items you want to share</p>
+            <h3>Share or Request Produce</h3>
+            <p>Post items you want to share or request</p>
           </Link>
           <Link to="/messages" className="action-card">
             <i className="fas fa-comments action-icon"></i>
