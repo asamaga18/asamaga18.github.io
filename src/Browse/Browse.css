@@ -225,7 +225,8 @@ body {
 }
 
 .category-btn.active {
-  background-color: #713237;
+  /* background-color: #713237; */
+  background-color: #46683B;
   color: white;
 }
 
