@@ -2,16 +2,20 @@
   display: flex;
   min-height: 100vh;
   background-color: #f8f9fa;
-}
-
-.chat-container {
+ }
+ 
+ 
+ .chat-container {
   width: calc(100% - 80px);
   margin-left: 80px;
   background-color: #f8f9fa;
   box-sizing: border-box;
-}
-
-.chat-main {
+  padding: 20px;
+  overflow-y: auto;
+ }
+ 
+ 
+ .chat-main {
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -19,22 +23,133 @@
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin: 20px;
-}
-
-.chat-header {
+ }
+ 
+ 
+ .chat-header {
   padding: 1rem;
   background-color: #713237;
   color: white;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
-}
-
-.chat-header h3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+ }
+ 
+ 
+ .chat-header h2 {
   margin: 0;
-  font-size: 1.25rem;
-}
-
-.messages-container {
+  font-size: 1.5rem;
+ }
+ 
+ 
+ .new-chat-btn {
+  background-color: white;
+  color: #713237;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+ }
+ 
+ 
+ .new-chat-btn:hover {
+  background-color: #f0f0f0;
+ }
+ 
+ 
+ /* Location and Contacts Section */
+ .location-contacts-section {
+  margin: 20px 0;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+ }
+ 
+ 
+ .location-header {
+  color: #713237;
+  font-size: 1.3rem;
+  margin-top: 0;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #f0f0f0;
+ }
+ 
+ 
+ .contacts-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* force 2 per row */
+  gap: 20px;
+ };
+ 
+ 
+ 
+ 
+ .contact-card {
+  background-color: #fff0eb !important; /* soft peach tint */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+ }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ .contact-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+ }
+ 
+ 
+ .contact-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #713237;
+  margin-bottom: 10px;
+ }
+ 
+ 
+ .contact-details {
+  font-size: 0.9rem;
+  color: #333;
+  margin-bottom: 15px;
+ }
+ 
+ 
+ .contact-details div {
+  margin-bottom: 5px;
+ }
+ 
+ 
+ .contact-message-btn {
+  background-color: #713237;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px;
+  width: 100%;
+  cursor: pointer;
+  transition: background-color 0.2s;
+ }
+ 
+ 
+ .contact-message-btn:hover {
+  background-color: #8B4513;
+ }
+ 
+ 
+ .messages-container {
   flex: 1;
   padding: 1rem;
   overflow-y: auto;
@@ -42,137 +157,158 @@
   flex-direction: column;
   gap: 1rem;
   background-color: #f8f9fa;
-}
-
-.message {
+  margin-bottom: 20px;
+  min-height: 400px;
+  max-height: 600px;
+  border-radius: 8px;
+ }
+ 
+ 
+ .message {
   max-width: 70%;
   padding: 0.75rem 1rem;
   border-radius: 1rem;
   position: relative;
   word-wrap: break-word;
-}
-
-.message.received {
+ }
+ 
+ 
+ .message.received {
   align-self: flex-start;
   background-color: white;
   border: 1px solid #e2e8f0;
   border-bottom-left-radius: 0.25rem;
-}
-
-.message.sent {
+ }
+ 
+ 
+ .message.sent {
   align-self: flex-end;
   background-color: #713237;
   color: white;
   border-bottom-right-radius: 0.25rem;
-}
-
-.message-timestamp {
+ }
+ 
+ 
+ .message-content {
+  display: flex;
+  flex-direction: column;
+ }
+ 
+ 
+ .message-sender {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+ }
+ 
+ 
+ .message-text {
+  font-size: 1rem;
+ }
+ 
+ 
+ .message-timestamp {
   font-size: 0.75rem;
   margin-top: 0.25rem;
   opacity: 0.8;
-}
-
-.message-input {
-  padding: 1rem;
-  background-color: white;
-  border-top: 1px solid #e2e8f0;
+  align-self: flex-end;
+ }
+ 
+ 
+ .message-form {
   display: flex;
-  gap: 1rem;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
-}
-
-.message-input input {
+  gap: 10px;
+  background-color: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+ }
+ 
+ 
+ .message-input {
   flex: 1;
-  padding: 0.75rem;
+  padding: 10px 15px;
   border: 1px solid #e2e8f0;
-  border-radius: 0.5rem;
+  border-radius: 8px;
   font-size: 1rem;
-}
-
-.message-input input:focus {
+ }
+ 
+ 
+ .message-input:focus {
   outline: none;
   border-color: #713237;
-}
-
-.message-input button {
-  padding: 0.75rem 1.5rem;
+ }
+ 
+ 
+ .send-button {
+  padding: 10px 20px;
   background-color: #713237;
   color: white;
   border: none;
-  border-radius: 0.5rem;
+  border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.2s;
-}
-
-.message-input button:hover {
+ }
+ 
+ 
+ .send-button:hover {
   background-color: #8B4513;
-}
-
-.message-input button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
-
-.no-conversation {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #666;
-  font-size: 1.1rem;
-  text-align: center;
-  padding: 2rem;
-}
-
-.error-message {
+ }
+ 
+ 
+ .error-message {
   background-color: #fee2e2;
   color: #dc2626;
   padding: 1rem;
-  margin: 1rem;
+  margin: 1rem 0;
   border-radius: 0.5rem;
   text-align: center;
-}
-
-.loading {
-  text-align: center;
-  padding: 2rem;
-  color: #666;
-}
-
-.no-messages {
-  text-align: center;
-  padding: 2rem;
-  color: #666;
-  font-style: italic;
-}
-
-@media (max-width: 768px) {
+ }
+ 
+ 
+ @media (max-width: 768px) {
   .chat-container {
     margin-left: 60px;
     width: calc(100% - 60px);
   }
-
+ 
+ 
+  .contacts-list {
+    grid-template-columns: 1fr;
+  }
+ 
+ 
   .message {
     max-width: 85%;
   }
-}
-
-@media (max-width: 576px) {
+ }
+ 
+ 
+ @media (max-width: 576px) {
   .chat-container {
     margin-left: 50px;
     width: calc(100% - 50px);
+    padding: 10px;
   }
-
+ 
+ 
+  .location-contacts-section {
+    padding: 15px;
+  }
+ 
+ 
   .message {
     max-width: 90%;
   }
-
-  .message-input {
-    padding: 0.75rem;
+ 
+ 
+  .message-form {
+    padding: 10px;
   }
-
-  .message-input button {
-    padding: 0.75rem 1rem;
+ 
+ 
+  .send-button {
+    padding: 10px 15px;
   }
-} 
+ }
+ 

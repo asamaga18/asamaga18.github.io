@@ -11,27 +11,10 @@ interface PostFormData {
   price: string;
   description: string;
   image: File | null;
-  itemName: string;
-  category: string;
-  quantity: string;
-  location: string;
-  price: string;
-  description: string;
-  image: File | null;
 }
 
 const Post = () => {
-  const navigate = useNavigate();
-  const [formData, setFormData] = useState<PostFormData>({
-    itemName: '',
-    category: '',
-    quantity: '',
-    location: '',
-    price: '',
-    description: '',
-    image: null
-  });
-  const [imagePreview, setImagePreview] = useState<string>('');
+  
   const navigate = useNavigate();
   const [formData, setFormData] = useState<PostFormData>({
     itemName: '',
@@ -78,14 +61,7 @@ const Post = () => {
       image_url: imagePreview || ''
     };
 
-    try {
-      const res = await fetch(`${import.meta.env.VITE_API_BASE}/posts`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(postData)
-      });
+    
     try {
       const res = await fetch(`${import.meta.env.VITE_API_BASE}/posts`, {
         method: 'POST',
@@ -102,12 +78,6 @@ const Post = () => {
         return;
       }
 
-      navigate('/browse');
-    } catch (err) {
-      console.error(err);
-      alert('Error posting item.');
-    }
-  };
       navigate('/browse');
     } catch (err) {
       console.error(err);
