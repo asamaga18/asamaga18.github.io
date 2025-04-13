@@ -12,7 +12,6 @@ from datetime import datetime
 from beanie import PydanticObjectId
 import traceback
 from auth import router as auth_router, get_current_user
-from post_routes import router as post_router
 
 from models import (
     User, Chat, Message,
@@ -34,8 +33,6 @@ app.add_middleware(
 
 # Include the auth router
 app.include_router(auth_router, prefix="/auth", tags=["auth"])
-# Include the posts router
-app.include_router(post_router)
 
 @app.on_event("startup")
 async def startup_event():

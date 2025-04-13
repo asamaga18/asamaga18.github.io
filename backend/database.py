@@ -10,34 +10,24 @@ load_dotenv()
 MONGODB_URL = os.getenv("MONGODB_URL")
 
 if not MONGODB_URL:
-    raise ValueError("No MongoDB connection string found in environment variables")
+    raise ValueError("No MongoDB connection URL found in environment variables")
 
 print(f"Connecting to MongoDB at: {MONGODB_URL.split('@')[1]}")  # Print URL without credentials
 
-try:
-    # Create Motor client
-    client = motor.motor_asyncio.AsyncIOMotorClient(
-        MONGODB_URL,
-        serverSelectionTimeoutMS=5000  # 5 second timeout
-    )
-
-    # Get database
-    db_name = MONGODB_URL.split('/')[-1].split('?')[0]
-    db = client[db_name]
-
-    # Get collections
-    posts_collection = db.posts
-
-except Exception as e:
-    print(f"Error initializing MongoDB client: {str(e)}")
-    raise
-
 async def init_db():
     try:
+        # Create Motor client
+        client = motor.motor_asyncio.AsyncIOMotorClient(
+            MONGODB_URL,
+            serverSelectionTimeoutMS=5000  # 5 second timeout
+        )
+        
         # Test the connection
         await client.admin.command('ping')
         print("Successfully connected to MongoDB Atlas!")
         
+        # Get the database name from the connection string
+        db_name = MONGODB_URL.split('/')[-1].split('?')[0]
         print(f"Using database: {db_name}")
         
         # Initialize beanie with the MongoDB client and document models

@@ -329,34 +329,3 @@ body {
     padding: 1rem;
   }
 }
-
-.loading-state,
-.error-state,
-.no-items {
-  text-align: center;
-  padding: 2rem;
-  font-size: 1.2rem;
-  color: #666;
-  background: white;
-  border-radius: 8px;
-  margin: 2rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.error-state {
-  color: #dc3545;
-}
-
-.error-state button {
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
-  background-color: #713237;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.error-state button:hover {
-  background-color: #8B4513;
-}
