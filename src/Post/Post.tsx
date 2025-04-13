@@ -116,6 +116,22 @@ const Post = () => {
             </div>
 
             <div className="form-group">
+              <label htmlFor="Request">Do you have a request or anything to sell?</label>
+              <select
+                id="request"
+                name="request"
+                className="input"
+                value={formData.location}
+                onChange={handleInputChange}
+                required
+              >
+                <option value="">Select an Option</option>
+                <option value="Request">Request</option>
+                <option value="Sell">Sell</option>
+              </select>
+            </div>
+
+            <div className="form-group">
               <label htmlFor="itemName">Item Name</label>
               <input
                 type="text"
