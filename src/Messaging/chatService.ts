@@ -57,7 +57,7 @@ export class ChatService {
       }
       
       return await response.json();
-    } catch (error) {
+    } catch (error: any) {
       clearTimeout(timeoutId);
       if (error.name === 'AbortError') {
         throw new Error('Request timed out');
@@ -89,14 +89,24 @@ export class ChatService {
   }
 
   static async markAsRead(messageIds: string[]): Promise<void> {
-    // TODO: Implement when needed
+    return this.makeRequest(`${this.baseUrl}/chat/messages/read`, {
+      method: 'POST',
+      body: JSON.stringify({ message_ids: messageIds })
+    });
   }
 
   static async getUserProfile(userId: string): Promise<ChatUser> {
-    // TODO: Implement when needed
+    const response = await this.makeRequest(`${this.baseUrl}/users/${userId}`);
     return {
-      id: userId,
-      name: 'User',
+      id: response.id,
+      email: response.email,
+      first_name: response.first_name,
+      last_name: response.last_name,
+      profile_picture: response.profile_picture
     };
+  }
+
+  static async getConversations(): Promise<ChatConversation[]> {
+    return this.makeRequest(`${this.baseUrl}/chat/conversations`);
   }
 } 
