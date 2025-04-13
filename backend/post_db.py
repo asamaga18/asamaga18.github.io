@@ -4,6 +4,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-client = AsyncIOMotorClient(os.getenv("MONGO_URI"))
-db = client["thetomatotrade"]  # Or whatever DB name you're using
+client = AsyncIOMotorClient(os.getenv("MONGODB_URL"))
+db = client["tomatotrade"]  # Using the same database name as in the connection string
 posts_collection = db.get_collection("posts")

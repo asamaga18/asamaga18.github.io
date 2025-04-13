@@ -18,15 +18,31 @@ const Browse: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [foodItems, setFoodItems] = useState<FoodItem[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchPosts = async () => {
       try {
+        setLoading(true);
+        setError(null);
+        console.log('Fetching from:', `${import.meta.env.VITE_API_BASE}/posts`);
+        
         const res = await fetch(`${import.meta.env.VITE_API_BASE}/posts`);
+        console.log('Response status:', res.status);
+        
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        
         const data = await res.json();
+        console.log('Received data:', data);
         setFoodItems(data);
       } catch (err) {
         console.error("Error fetching posts:", err);
+        setError(err instanceof Error ? err.message : 'Failed to fetch posts');
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -46,6 +62,27 @@ const Browse: React.FC = () => {
 
     return matchesSearch && matchesCategory;
   });
+
+  if (loading) {
+    return (
+      <div className="browse-container">
+        <Sidebar />
+        <div className="loading-state">Loading posts...</div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="browse-container">
+        <Sidebar />
+        <div className="error-state">
+          Error: {error}
+          <button onClick={() => window.location.reload()}>Try Again</button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="browse-container">
@@ -77,25 +114,29 @@ const Browse: React.FC = () => {
       </div>
 
       <div className="food-grid">
-        {filteredItems.map((item, index) => (
-          <div key={item._id || index} className="food-card">
-            <img
-              src={item.image_url || "https://via.placeholder.com/150"}
-              alt={item.item_name}
-              className="food-image"
-            />
-            <div className="food-info">
-              <h3>{item.item_name}</h3>
-              <p className="location">📍 {item.location}</p>
-              <p className="quantity">Quantity: {item.quantity}</p>
-              <p className="price">Price: {item.price}</p>
-              <p className="description">{item.description}</p>
-              <Link to={`/item/${item._id}`} className="view-details-btn">
-                View Details
-              </Link>
+        {filteredItems.length === 0 ? (
+          <div className="no-items">No items found</div>
+        ) : (
+          filteredItems.map((item, index) => (
+            <div key={item._id || index} className="food-card">
+              <img
+                src={item.image_url || "https://via.placeholder.com/150"}
+                alt={item.item_name}
+                className="food-image"
+              />
+              <div className="food-info">
+                <h3>{item.item_name}</h3>
+                <p className="location">📍 {item.location}</p>
+                <p className="quantity">Quantity: {item.quantity}</p>
+                <p className="price">Price: {item.price}</p>
+                <p className="description">{item.description}</p>
+                <Link to={`/item/${item._id}`} className="view-details-btn">
+                  View Details
+                </Link>
+              </div>
             </div>
-          </div>
-        ))}
+          ))
+        )}
       </div>
     </div>
   );
