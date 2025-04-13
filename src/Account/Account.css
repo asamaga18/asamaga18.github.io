@@ -112,16 +112,35 @@ option {
     padding: 20px;
 }
 
-#logOutButton {
-    margin-top: 1rem;
-    height: 3rem;
-    width: 10rem;
-    font-weight: bold;
+.logOutButton {
+    background-color: #713237;
+    color: white;
+    padding: 10px 20px;
     font-size: 1rem;
-}
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    width: 15%;
+    align-items: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .logOutButton:hover {
+    background-color: #8B4513;
+    transform: translateY(-2px);
+  }
+  
+  .logOutButton:active {
+    transform: translateY(0);
+  }
+  
 
 .dotted-line {
     border-top: 2px dotted #000;
     margin: 20px 0;
 }
+
+
     
