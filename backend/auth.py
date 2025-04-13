@@ -1,7 +1,8 @@
-from fastapi import APIRouter, HTTPException, status, Depends
+from fastapi import APIRouter, HTTPException, status, Depends, Body
 from fastapi.security import OAuth2PasswordBearer
 from models import User, UserResponse
 from beanie import PydanticObjectId
+from pydantic import BaseModel
 import jwt
 from datetime import datetime, timedelta
 from typing import Optional
@@ -10,6 +11,9 @@ from google.auth.transport import requests
 import os
 
 router = APIRouter()
+
+class GoogleAuthRequest(BaseModel):
+    token: str
 
 # Load configuration from environment variables
 GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID")
@@ -23,21 +27,26 @@ ALGORITHM = "HS256"
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token", auto_error=False)
 
 @router.post("/google-auth")
-async def google_auth(token: str):
+async def google_auth(request: GoogleAuthRequest):
     try:
+        print(f"Received token for authentication: {request.token[:20]}...")  # Print first 20 chars for safety
+        
         # Verify the Google token
         idinfo = id_token.verify_oauth2_token(
-            token, requests.Request(), GOOGLE_CLIENT_ID)
+            request.token, requests.Request(), GOOGLE_CLIENT_ID)
+        print("Token verified successfully")
 
         if idinfo['iss'] not in ['accounts.google.com', 'https://accounts.google.com']:
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
                 detail="Invalid issuer"
             )
+        print(f"Found user info - email: {idinfo['email']}, sub: {idinfo['sub']}")
 
         # Find or create user
         user = await User.find_one({"google_id": idinfo['sub']})
         if not user:
+            print("Creating new user")
             user = User(
                 google_id=idinfo['sub'],
                 email=idinfo['email'],
@@ -46,16 +55,20 @@ async def google_auth(token: str):
                 profile_picture=idinfo.get('picture')
             )
             await user.create()
+            print(f"Created new user with ID: {user.id}")
         else:
+            print(f"Updating existing user: {user.id}")
             # Update user information
             user.email = idinfo['email']
             user.first_name = idinfo.get('given_name')
             user.last_name = idinfo.get('family_name')
             user.profile_picture = idinfo.get('picture')
             await user.save()
+            print("User updated successfully")
 
         # Create access token
         access_token = create_access_token(str(user.id))
+        print("Access token created")
         
         return {
             "access_token": access_token,
@@ -70,9 +83,16 @@ async def google_auth(token: str):
         }
 
     except ValueError as e:
+        print(f"ValueError during authentication: {str(e)}")
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Invalid token"
+            detail=f"Invalid token: {str(e)}"
+        )
+    except Exception as e:
+        print(f"Unexpected error during authentication: {str(e)}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Authentication failed: {str(e)}"
         )
 
 async def get_current_user(token: Optional[str] = Depends(oauth2_scheme)) -> User:
